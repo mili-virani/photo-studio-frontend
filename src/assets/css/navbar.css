@@ -1,0 +1,93 @@
+/* Increase font size and set color to white */
+.main-menu li a {
+  font-size: 16px !important; /* Adjust size as needed */
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Increase font size for dropdown menu */
+.sub-menu li a {
+  font-size: 16px; /* Adjust size */
+  color: white !important;
+}
+
+/* Change color on hover */
+.main-menu li a:hover,
+.sub-menu li a:hover {
+  color: #f8c146 !important; /* Highlight color */
+}
+
+/* Increase font size for cart icon */
+
+/* Increase font size for search icon */
+.modal_search_icon i {
+  font-size: 22px;
+  color: white !important;
+}
+
+.cart-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Adjust badge position and size */
+.cart-badge {
+  position: absolute;
+  top: -5px; /* Move it closer to the cart */
+  right: -10px; /* Adjust to center properly */
+  background-color: red;
+  color: white;
+  font-size: 12px; /* Reduce size */
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjust cart icon size */
+.cart-button svg {
+  width: 30px; /* Adjust as needed */
+  height: 30px;
+}
+
+.header{
+  padding: 4px 50px !important;
+}
+
+.notification-container {
+  position: relative;
+}
+
+.notification-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 250px;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;
+}
+
+

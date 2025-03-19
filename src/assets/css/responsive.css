@@ -1,0 +1,345 @@
+@media screen and (max-width: 1400px) {
+    .blog-details.blog-details-box {
+        padding: 100px 30px;
+    }
+}
+
+
+@media screen and (max-width: 1199px) {
+    .wptb-slider.style20 {
+        height: auto;
+    }
+    .wptb-slider .ytvideo-bg {
+        padding-bottom: 52.25%;
+    }
+
+    .grid_lines {
+        display: none;
+    }
+    
+    .sidebar .wptb-testimonial1 .wptb-item--inner {
+        padding: 30px 40px;
+    }
+    
+    .wptb-testimonial-one .wptb-swiper-navigation.style1 {
+        display: none;
+    }
+
+    .wptb-marquee {
+        padding-bottom: 90px;
+    }
+    .wptb-text-marquee1 .wptb-item--text {
+        font-size: 60px;
+        line-height: 50px;
+    }
+
+    .wptb-counter1 .wptb-item--holder {
+        gap: 10px;
+    }
+    .wptb-counter1.mr-bottom-100 {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .section, section,
+    .wptb-about-two {
+        padding: 90px 0px;
+    }
+
+    .h1, h1{
+        font-size: var(--fs-42);
+        line-height: 1.3em;
+    }
+
+    .blog-details .post-header .post-title,
+    .h2, h2{
+        font-size: var(--fs-30);
+        line-height: 1.2em;
+    }
+    
+    .h3, h3{
+        font-size: var(--fs-24);
+        line-height: 1.4em;
+    }
+    
+    .h4, h4{
+        font-size: var(--fs-22);
+        line-height: 1.6em;
+    }
+    
+    .h5, h5{
+        font-size: var(--fs-20);
+        line-height: 1.6em;
+    }
+    
+    .h6, h6{
+        font-size: var(--fs-17);
+        line-height: 1.6em;
+    }
+
+    .aside_info_wrapper {
+        padding: 30px 30px; 
+    }
+
+    .wptb-image-box1,
+    .wptb-image-box3 {
+        margin-bottom: 30px;
+    }
+
+    .wptb-about-company-one .wptb-image-single .wptb-item--image {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    .wptb-office-address .widget {
+        padding-left: 30px;
+        padding-right: 15px;
+    }
+    
+    .wptb-appointment-form-one .wptb-form--wrapper {
+        position: relative;
+    }
+    
+    .blog-details ul.point-order li {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .wptb-team-ci-wrap .team-ci--title {
+        font-size: 30px;
+    }
+    
+    .blog-details .blog-details-inner .widget-title {
+        font-size: 22px;
+    }
+    
+    .wptb-testimonial-one .wptb-swiper-navigation.style1 {
+        right: 15px;
+        bottom: 15px;
+    }
+    
+    .blog-details.blog-details-box {
+        padding: 100px 15px;
+    }
+    
+    .wptb-album-one {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        padding-bottom: 200px;
+    }
+
+    .portfolio-filters-content .filters-button-group .button {
+        padding: 0px 20px 35px 20px;
+    }
+
+    .wptb-counter1 .wptb-item--value {
+        font-size: 50px;
+        line-height: 1.3em;
+    }
+    .swiper-gallery-two .wptb-swiper-navigation.style2 {
+        width: 95%;
+    }
+
+    .wptb-team-one .wptb-swiper-navigation.style1 {
+        position: relative;
+    }
+
+    .wptb-slider.style19 .wptb-heading {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .h1, h1{
+        font-size: var(--fs-42);
+    }
+    
+    .h2, h2{
+        font-size: var(--fs-30);
+    }
+    
+    .h3, h3{
+        font-size: var(--fs-24);
+    }
+    
+    .h4, h4{
+        font-size: var(--fs-22);
+    }
+    
+    .h5, h5{
+        font-size: var(--fs-20);
+    }
+    
+    .h6, h6{
+        font-size: var(--fs-18);
+    }
+
+    .wptb-counter1 .wptb-item--value {
+        font-size: 40px;
+        line-height: 1.3em;
+    }
+    .wptb-counter1 .wptb-item--text {
+        font-size: 16px;
+        line-height: 1.3em;
+    }
+
+    .wptb-service-one {
+        padding-bottom: 0px;
+    }
+
+    .wptb-appointment-form-one .wptb-form--wrapper {
+        padding: 30px;
+    }
+    
+    .wptb-header--cart {
+        margin-right: 35px;
+    }
+    
+    .wptb-instagram--gallery .wptb-item {
+        max-width: 150px;
+    }
+    
+    .wptb-about-one .wptb-item-layer-one {
+        left: -3%;
+        bottom: 35%;
+    }
+
+    br {
+        display: none;
+    }
+    
+    .wptb-gallery-holder {
+        padding: 30px 60px;
+    }
+
+    .portfolio-filters-content .filters-button-group .button {
+        padding: 0px 10px 15px 10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: var(--fw-normal);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .swiper-slide .grid-item .wptb-item--holder {
+        padding: 20px;
+    }
+    .wptb-slider:not(.style11) {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    
+    .wptb-slider:not(.style11) .wptb-left-pane,
+    .wptb-slider:not(.style11) .wptb-right-pane {
+        display: none;
+    }
+    
+    .wptb-slider.style7 {
+        padding: 0px 0px;
+    }
+    
+    .wptb-slider.style8 {
+        padding: 30px 0px;
+    }
+    
+    .wptb-slider.style7 .wptb-swiper-slider-seven .wptb-slider--item{
+        padding: 0px;
+        height: 100vh;
+    }
+    
+    .wptb-slider.style8 .wptb-slider--item {
+        padding: 0px;
+        height: calc(100vh - 215px);
+    }
+    
+    .wptb-slider.style7 .wptb-slider--image {
+        border-radius: 0px;
+    }
+    
+    .wptb-slider.style8 .wptb-slider--image {
+        height: 100%;
+    }
+    
+    .wptb-slider.style8 .wptb-slider--inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .h1, h1{
+        font-size: var(--fs-36);
+    }
+    
+    .h2, h2{
+        font-size: var(--fs-26);
+    }
+    
+    .h3, h3{
+        font-size: var(--fs-22);
+    }
+    
+    .h4, h4{
+        font-size: var(--fs-20);
+    }
+    
+    .h5, h5{
+        font-size: var(--fs-18);
+    }
+    
+    .h6, h6{
+        font-size: var(--fs-17);
+    }
+
+    .header .header_search {
+        display: none;
+    }
+
+    .header .header_right_part {
+        margin-left: 30px;
+    }
+
+    .wptb-partner--image2 {
+        width: 100%;
+    }
+    
+    .wptb-contact-page-wrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .preloader-inner .loading-text {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    
+    .wptb-agency-experience .wptb-heading .wptb-item--description {
+        padding-right: 0px;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    .wptb-contact-page-wrapper {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .wptb-credential #countdown ul {
+        gap: 20px;
+    }
+    
+    .wptb-credential #countdown ul li {
+        font-size: 14px;
+    }
+    
+    .wptb-credential #countdown ul li span {
+        font-size: 36px;
+        margin-bottom: 0px;
+    }
+}
