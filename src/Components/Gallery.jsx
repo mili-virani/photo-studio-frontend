@@ -90,7 +90,7 @@ const Gallery = () => {
                     style={{ cursor: "pointer" }}
                   >
                     <img
-                      src={project.image_url}
+                      src={BACKEND_URL+project.image_url}
                       alt={project.title}
                       className="card-img-top img-fluid object-fit-cover"
                       style={{ height: "500px", width: "100%" }}
