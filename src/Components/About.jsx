@@ -29,7 +29,7 @@ const About = () => {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/dashboard-counts") // Adjust API URL
+      .get("/api/dashboard-counts") // Adjust API URL
       .then((response) => {
         setCategoryCount(response.data.categories);
       })
@@ -38,7 +38,7 @@ const About = () => {
       });
   }, []);
   useEffect(() => {
-    fetch("http://localhost:8000/api/aboutus") // Tamari backend API URL muko
+    fetch("/api/aboutus") // Tamari backend API URL muko
       .then((res) => res.json())
       .then((data) => setAboutData(data))
       .catch((error) => console.error("Error fetching About Us data:", error));
@@ -49,7 +49,7 @@ const About = () => {
     const fetchFeedbackData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/api/feedback/feedback-stats"
+          "/api/feedback/feedback-stats"
         ); // Update with your API
         const data = await response.json();
         setFeedbackStats({
