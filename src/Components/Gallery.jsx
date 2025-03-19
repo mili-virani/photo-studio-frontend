@@ -110,7 +110,7 @@ const Gallery = () => {
             <button className="close-btn-gallery" onClick={closeModal} >
             &times;</button>
             <button className="nav-btn left" onClick={prevImage} >&#10094;</button>
-            <img src={projects[selectedImage].image_url} alt="Preview" className="modal-image-gallery" />
+            <img src={BACKEND_URL+projects[selectedImage].image_url} alt="Preview" className="modal-image-gallery" />
             <button className="nav-btn right" onClick={nextImage}>&#10095;</button>
           </div>
         </div>
