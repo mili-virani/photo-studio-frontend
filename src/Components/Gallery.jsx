@@ -13,7 +13,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const response = await axios.get("/api/gallery");
+        const response = await axios.get("https://photo-studio-backend-jgwp.onrender.com/api/gallery");
         setProjects(response.data);
       } catch (error) {
         setError("Failed to load gallery data.");
