@@ -3,6 +3,7 @@ import axios from "axios";
 import circleImage from "../assets/img/more/circle.png";
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import "../assets/css/gallery.css";
+const BACKEND_URL = "https://photo-studio-backend-jgwp.onrender.com";
 
 const Gallery = () => {
   const [projects, setProjects] = useState([]);
@@ -13,7 +14,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const response = await axios.get("/api/gallery");
+        const response = await axios.get(`${BACKEND_URL}/api/gallery`);
         setProjects(response.data);
       } catch (error) {
         setError("Failed to load gallery data.");
