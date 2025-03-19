@@ -3,7 +3,7 @@ import axios from "axios";
 import circleImage from "../assets/img/more/circle.png";
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import "../assets/css/gallery.css";
-// const BACKEND_URL = process.env.BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Gallery = () => {
   const [projects, setProjects] = useState([]);
