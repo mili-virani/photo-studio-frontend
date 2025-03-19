@@ -3,7 +3,6 @@ import axios from "axios";
 import circleImage from "../assets/img/more/circle.png";
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import "../assets/css/gallery.css";
-const BACKEND_URL = "https://photo-studio-backend-jgwp.onrender.com";
 
 const Gallery = () => {
   const [projects, setProjects] = useState([]);
