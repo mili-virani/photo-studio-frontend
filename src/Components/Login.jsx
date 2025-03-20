@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import circleImage from "../assets/img/more/circle.png";
@@ -159,9 +159,9 @@ const Login = () => {
                               Remember Password
                             </label>
                           </div>
-                          <a href={`/forgotPassword`} className="text-white fw-bold">
+                          <Link to={`/forgotPassword`} className="text-white fw-bold">
                             Forgot Password?
-                          </a>
+                          </Link>
                         </div>
 
                         {/* Submit Button */}
