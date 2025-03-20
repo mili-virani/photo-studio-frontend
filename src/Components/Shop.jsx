@@ -150,7 +150,7 @@ const Shop = () => {
                     <div className="product_item" key={product.id}>
                       <div className="product_thumb">
                         <div className="product_imagebox">
-                          <img className="primary_img" src={product.image} alt={product.name} />
+                          <img className="primary_img" src={BACKEND_URL + product.image} alt={product.name} />
                         </div>
                         <div className="product_item_inner">
                           <div className="label_text">
