@@ -3,9 +3,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast"; // Import Toaster
 import "../assets/css/components.css";
 import "../assets/css/contact.css";
+import { useNavigate } from "react-router-dom";
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ResetPassword = () => {
+  const navigate = useNavigate(); // ✅ Hook for navigation
   const [formData, setFormData] = useState({
     password: "",
     confirmPassword: "",
@@ -41,6 +44,7 @@ const ResetPassword = () => {
 
   const handlePasswordReset = async () => {
     const storedEmail = localStorage.getItem("userEmail");
+    console.log("storedEmail:",storedEmail);
 
     try {
       const payload = {
@@ -61,7 +65,7 @@ const ResetPassword = () => {
 
         localStorage.removeItem("userEmail");
         setTimeout(() => {
-          window.location.href = "/login";
+          navigate("/login");
         }, 2000);
       } else {
         toast.error(data.message || "Something went wrong!", { position: "top-center" });

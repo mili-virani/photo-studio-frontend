@@ -175,7 +175,7 @@ const Login = () => {
 
                         <div className="mt-3 text-center text-white">
                           <p style={{ color: "white" }}>
-                           Don't have an account? <a href= {`/register`} style={{ color: "yellow", fontWeight: "bold" }}>Register</a>
+                           Don't have an account? <Link to = {`/register`} style={{ color: "yellow", fontWeight: "bold" }}>Register</Link>
                           </p>
                         </div>
 

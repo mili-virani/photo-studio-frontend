@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -214,7 +214,7 @@ const Register = () => {
                           </div>
                           <div className="mt-4 text-center" >
                             <p style={{color: "white"}}>
-                              Already have an account? <a href={`${BACKEND_URL}/login`} style={{ color: "yellow", fontWeight: "bold" }}>Log in here</a>
+                              Already have an account? <Link to={`${BACKEND_URL}/login`} style={{ color: "yellow", fontWeight: "bold" }}>Log in here</Link>
                             </p>
                           </div>
                           </div>
