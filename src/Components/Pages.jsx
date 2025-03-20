@@ -24,7 +24,7 @@ const Pages = () => {
 
     if (!categoryId) {
       toast.error("No category selected.");
-      navigate("/services");
+      navigate(`${BACKEND_URL}/services`);
       return;
     }
 

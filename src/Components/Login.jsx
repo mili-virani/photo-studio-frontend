@@ -159,7 +159,7 @@ const Login = () => {
                               Remember Password
                             </label>
                           </div>
-                          <a href="/forgot-password" className="text-white fw-bold">
+                          <a href={`${BACKEND_URL}/forgot-password`} className="text-white fw-bold">
                             Forgot Password?
                           </a>
                         </div>
@@ -175,7 +175,7 @@ const Login = () => {
 
                         <div className="mt-3 text-center text-white">
                           <p style={{ color: "white" }}>
-                           Don't have an account? <a href="/register" style={{ color: "yellow", fontWeight: "bold" }}>Register</a>
+                           Don't have an account? <a href= {`${BACKEND_URL}/register`} style={{ color: "yellow", fontWeight: "bold" }}>Register</a>
                           </p>
                         </div>
 

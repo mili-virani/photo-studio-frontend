@@ -138,7 +138,7 @@ const OTPVerification = () => {
         localStorage.setItem("resetToken", response.data.resetToken);
 
         setTimeout(() => {
-            navigate("/reset-password");
+            navigate(`${BACKEND_URL}/reset-password`);
         }, 2000);
     } catch (error) {
         console.error("Error in OTP verification:", error);

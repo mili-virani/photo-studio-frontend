@@ -60,7 +60,7 @@ const Navbar = () => {
     localStorage.removeItem("userId");
     localStorage.removeItem("fullName");
     setUserFullName(null);
-    navigate("/login");
+    navigate(`${BACKEND_URL}/login`);
   };
 
   // Close dropdown when clicking outside

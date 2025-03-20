@@ -214,7 +214,7 @@ const Register = () => {
                           </div>
                           <div className="mt-4 text-center" >
                             <p style={{color: "white"}}>
-                              Already have an account? <a href="/login" style={{ color: "yellow", fontWeight: "bold" }}>Log in here</a>
+                              Already have an account? <a href={`${BACKEND_URL}/login`} style={{ color: "yellow", fontWeight: "bold" }}>Log in here</a>
                             </p>
                           </div>
                           </div>

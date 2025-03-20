@@ -128,7 +128,7 @@ const makepayment = async (orderId) => {
         }
       else {
           // Payment successful → Navigate to success page
-          navigate("/PaymentSuccess");
+          navigate(`${BACKEND_URL}/PaymentSuccess`);
       }
 
     } catch (error) {

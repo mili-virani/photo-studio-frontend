@@ -54,7 +54,7 @@ const Services = () => {
   const handleCategoryClick = (categoryId) => {
     console.log("Navigating with category:", categoryId); // Debugging
     localStorage.setItem("categoryId", categoryId);
-    navigate(`/pages?category=${categoryId}`);
+    navigate(`${BACKEND_URL}/pages?category=${categoryId}`);
   };
  
   return (

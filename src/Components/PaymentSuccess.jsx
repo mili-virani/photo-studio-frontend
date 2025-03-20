@@ -22,10 +22,10 @@ const PaymentSuccess = () => {
         console.log("Payment status updated successfully");
         localStorage.removeItem("cart"); // Clear cart after successful payment
         localStorage.removeItem("orderId");
-        navigate("/order-successfully"); // Redirect to order success page
+        navigate(`${BACKEND_URL}/order-successfully`); // Redirect to order success page
       } catch (error) {
         console.error("Failed to update payment status", error);
-        navigate("/order-failed");
+        navigate(`${BACKEND_URL}/order-failed`);
       }
     };
 

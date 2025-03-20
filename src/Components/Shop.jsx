@@ -18,7 +18,7 @@ const Shop = () => {
         position: "top-center",
         duration: 3000,
       });
-      setTimeout(() => navigate("/login"), 3000);
+      setTimeout(() => navigate(`${BACKEND_URL}/login`), 3000);
     }
   }, [navigate]);
 
