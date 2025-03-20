@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-
 import '../assets/css/profile.css'
 import bgImage from "../assets/img/background/page-header-bg-10.jpg";
 import circleImage from "../assets/img/more/circle.png";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Profile = () => {
   const [user, setUser] = useState(null);
