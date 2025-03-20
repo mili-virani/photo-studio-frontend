@@ -9,8 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 import logo from "../assets/img/logo.png";
 import "../assets/css/header.css";
 import "../assets/css/navbar.css";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-const socket = io("http://localhost:8000");
+const socket = io(BACKEND_URL);
 
 const Navbar = () => {
   const [totalItems, setTotalItems] = useState(0);

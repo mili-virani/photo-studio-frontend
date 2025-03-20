@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +26,7 @@ const ForgotPassword = () => {
   
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/otp/send-otp",
+        `${BACKEND_URL}/api/otp/send-otp`,
         { email }
       );
   
@@ -35,7 +37,7 @@ const ForgotPassword = () => {
       localStorage.setItem("otpToken", response.data.otpToken); // Assuming backend sends this
   
       setTimeout(() => {
-        navigate("/otp-verification");
+        navigate(`${BACKEND_URL}/otp-verification`);
       }, 2000);
     } catch (error) {
       console.error("Error in forgot password:", error);
