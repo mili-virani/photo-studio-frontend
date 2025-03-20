@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
-
 
 const PaymentSuccess = () => {
   const navigate = useNavigate();
@@ -24,10 +22,10 @@ const PaymentSuccess = () => {
         console.log("Payment status updated successfully");
         localStorage.removeItem("cart"); // Clear cart after successful payment
         localStorage.removeItem("orderId");
-        navigate(`${FRONTEND_URL}/order-successfully`); // Redirect to order success page
+        navigate(`/order-successfully`); // Redirect to order success page
       } catch (error) {
         console.error("Failed to update payment status", error);
-        navigate(`${FRONTEND_URL}/order-failed`);
+        navigate(`/order-failed`);
       }
     };
 

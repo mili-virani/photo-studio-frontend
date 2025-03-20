@@ -7,7 +7,6 @@ import "../assets/css/shopcart.css";
 import "../assets/css/components.css";
 import {loadStripe} from '@stripe/stripe-js';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -129,7 +128,7 @@ const makepayment = async (orderId) => {
         }
       else {
           // Payment successful → Navigate to success page
-          navigate(`${FRONTEND_URL}/PaymentSuccess`);
+          navigate(`/PaymentSuccess`);
       }
 
     } catch (error) {

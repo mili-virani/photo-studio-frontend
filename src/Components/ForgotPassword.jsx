@@ -3,7 +3,6 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -37,7 +36,7 @@ const ForgotPassword = () => {
       localStorage.setItem("otpToken", response.data.otpToken); // Assuming backend sends this
   
       setTimeout(() => {
-        navigate(`${FRONTEND_URL}/otp-verification`);
+        navigate(`/otp-verification`);
       }, 2000);
     } catch (error) {
       console.error("Error in forgot password:", error);
