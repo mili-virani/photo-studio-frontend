@@ -7,7 +7,6 @@ import circleImage from "../assets/img/more/circle.png";
 import bgImage from "../assets/img/background/page-header-bg-8.jpg";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
