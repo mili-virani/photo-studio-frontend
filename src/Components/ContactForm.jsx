@@ -10,10 +10,10 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     mobileno: "",
-    message: "",
+    text: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -23,8 +23,8 @@ const ContactForm = () => {
   };
 
   const validateForm = () => {
-    const { name, email, mobileno, message } = formData;
-    if (!name || !email || !mobileno || !message) {
+    const { username, email, mobileno, text } = formData;
+    if (!username || !email || !mobileno || !text) {
       toast.error("All fields are required!");
       return false;
     }
@@ -55,7 +55,7 @@ const ContactForm = () => {
 
       if (response.ok) {
         toast.success("Message sent successfully!");
-        setFormData({ name: "", email: "", mobileno: "", message: "" });
+        setFormData({ username: "", email: "", mobileno: "", text: "" });
       } else {
         toast.error(data.message || "Failed to send message");
       }
@@ -93,7 +93,7 @@ const ContactForm = () => {
                     <div className="wptb-form--inner">
                       <div className="row">
                         <div className="col-lg-12 mb-4">
-                          <input type="text" name="name" className="form-control" placeholder="Name*" value={formData.name} onChange={handleChange} required />
+                          <input type="text" name="username" className="form-control" placeholder="Name*" value={formData.username} onChange={handleChange} required />
                         </div>
                         <div className="col-lg-12 mb-4">
                           <input type="email" name="email" className="form-control" placeholder="E-mail*" value={formData.email} onChange={handleChange} required />
@@ -102,7 +102,7 @@ const ContactForm = () => {
                           <input type="text" name="mobileno" className="form-control" placeholder="Mobile No*" value={formData.mobileno} onChange={handleChange} required />
                         </div>
                         <div className="col-lg-12 mb-4">
-                          <textarea name="message" className="form-control" placeholder="Message*" rows="4" value={formData.message} onChange={handleChange} required></textarea>
+                          <textarea name="text" className="form-control" placeholder="Message*" rows="4" value={formData.text} onChange={handleChange} required></textarea>
                         </div>
                         <div className="col-lg-12 text-center">
                           <button className="btn white-opacity creative" type="submit" disabled={loading}>
