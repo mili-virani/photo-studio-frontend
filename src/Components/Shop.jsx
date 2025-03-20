@@ -3,13 +3,14 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast"; // Toast notifications
 import headerBg from "../assets/img/background/page-header-bg-12.jpg";
 import circleImg from "../assets/img/more/circle.png";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Shop = () => {
   const navigate = useNavigate();
   const [viewType, setViewType] = useState("grid");
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]); // State to store products
-
+   
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -25,7 +26,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/products");
+        const response = await fetch(`${BACKEND_URL}/api/products`);
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }

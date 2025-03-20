@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast"; // Import Toaster
 import "../assets/css/components.css";
 import "../assets/css/contact.css";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ const ResetPassword = () => {
         newPassword: formData.password,
       };
 
-      const response = await fetch("http://localhost:8000/api/reset-password", {
+      const response = await fetch(`${BACKEND_URL}/api/reset-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

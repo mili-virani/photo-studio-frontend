@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 
 const OTPVerification = () => {
   const [otp, setOtp] = useState(["", "", "", "", ""]);  // ✅ 5-digit OTP
@@ -43,7 +45,7 @@ const OTPVerification = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/otp/resend-otp", {  // ✅ Updated URL
+      const response = await fetch(`${BACKEND_URL}/api/otp/resend-otp`, {  // ✅ Updated URL
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -81,7 +83,7 @@ const OTPVerification = () => {
   //   setLoading(true);
 
   //   try {
-  //     const response = await axios.post("http://localhost:8000/api/otp/verify-otp", {  // ✅ Updated URL
+  //     const response = await axios.post("${BACKEND_URL}/api/otp/verify-otp", {  // ✅ Updated URL
   //       email,
   //       otp: trimmedOtp,
   //     });
@@ -125,7 +127,7 @@ const OTPVerification = () => {
     setLoading(true);
 
     try {
-        const response = await axios.post("http://localhost:8000/api/otp/verify-otp", {
+        const response = await axios.post(`${BACKEND_URL}/api/otp/verify-otp`, {
             email,
             otp: trimmedOtp  // Ensure OTP is sent as a string
         });

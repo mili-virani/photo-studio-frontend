@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 import '../assets/css/profile.css'
 import bgImage from "../assets/img/background/page-header-bg-10.jpg";
@@ -20,7 +21,7 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/api/profile", {
+        const response = await axios.get(`${BACKEND_URL}/api/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -49,7 +50,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.put("http://localhost:8000/api/profile", formData, {
+      const response = await axios.put(`${BACKEND_URL}/api/profile`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
