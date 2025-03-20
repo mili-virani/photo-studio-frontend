@@ -90,7 +90,7 @@ const Pages = () => {
                   <div className="card bg-transparent border-0 shadow-lg p-4">
                     <div className="row g-0 align-items-center">
                       <div className="col-md-6">
-                        <img src={pkg.image_url} alt={pkg.service_name} className="img-fluid rounded" style={{ width: "100%", height: "100%", objectFit: "cover"}}  />
+                        <img src={BACKEND_URL + pkg.image_url} alt={pkg.service_name} className="img-fluid rounded" style={{ width: "100%", height: "100%", objectFit: "cover"}}  />
                       </div>
                       <div className="col-md-6 ps-4">
                         <div className="card-body text-white bg-transparent p-4 rounded">
