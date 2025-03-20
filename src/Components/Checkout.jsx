@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/shopcart.css";
 import "../assets/css/components.css";
+import {loadStripe} from '@stripe/stripe-js';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-import {loadStripe} from '@stripe/stripe-js';
 const Checkout = () => {
   const navigate = useNavigate();
 
