@@ -5,6 +5,8 @@ import { toast, Toaster } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import circleImage from "../assets/img/more/circle.png";
 import bgImage from "../assets/img/background/page-header-bg-8.jpg";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -38,7 +40,7 @@ const Login = () => {
 
     try {
       // Step 1: Login API call
-      const response = await axios.post("/api/login", formData, {
+      const response = await axios.post(`${BACKEND_URL}/api/login`, formData, {
         headers: { "Content-Type": "application/json" },
       });
 
@@ -49,7 +51,7 @@ const Login = () => {
       localStorage.setItem("userId", userId);
 
       // Step 3: Fetch full name using userId
-      const userResponse = await axios.get(`/api/users/${userId}`, {
+      const userResponse = await axios.get(`${BACKEND_URL}/api/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
