@@ -63,7 +63,7 @@ const Pages = () => {
     localStorage.setItem("servicePrice", price); // ✅ Price સાચી રીતે store કરો
   
     setTimeout(() => {
-      navigate(`/booking?service=${serviceId}`);
+      navigate(`${BACKEND_URL}/booking?service=${serviceId}`);
     }, 100); // Ensure storage is updated before navigating
   };
   
