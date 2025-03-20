@@ -6,6 +6,7 @@ import "../assets/css/header.css";
 import headerBg from "../assets/img/background/bg-14.jpg";
 import circleImg from "../assets/img/more/circle.png";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
 const Pages = () => {
   const [packages, setPackages] = useState([]);
@@ -24,7 +25,7 @@ const Pages = () => {
 
     if (!categoryId) {
       toast.error("No category selected.");
-      navigate(`${BACKEND_URL}/services`);
+      navigate(`/services`);
       return;
     }
 
@@ -63,7 +64,7 @@ const Pages = () => {
     localStorage.setItem("servicePrice", price); // ✅ Price સાચી રીતે store કરો
   
     setTimeout(() => {
-      navigate(`${BACKEND_URL}/booking?service=${serviceId}`);
+      navigate(`${FRONTEND_URL}/booking?service=${serviceId}`);
     }, 100); // Ensure storage is updated before navigating
   };
   

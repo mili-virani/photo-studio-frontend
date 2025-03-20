@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import circleImage from "../assets/img/more/circle.png";
 import bgImage from "../assets/img/background/page-header-bg-8.jpg";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -159,7 +160,7 @@ const Login = () => {
                               Remember Password
                             </label>
                           </div>
-                          <a href={`${BACKEND_URL}/forgot-password`} className="text-white fw-bold">
+                          <a href={`${FRONTEND_URL}/forgot-password`} className="text-white fw-bold">
                             Forgot Password?
                           </a>
                         </div>
@@ -175,7 +176,7 @@ const Login = () => {
 
                         <div className="mt-3 text-center text-white">
                           <p style={{ color: "white" }}>
-                           Don't have an account? <a href= {`${BACKEND_URL}/register`} style={{ color: "yellow", fontWeight: "bold" }}>Register</a>
+                           Don't have an account? <a href= {`${FRONTEND_URL}/register`} style={{ color: "yellow", fontWeight: "bold" }}>Register</a>
                           </p>
                         </div>
 

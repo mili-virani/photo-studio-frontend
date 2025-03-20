@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
 const OTPVerification = () => {
   const [otp, setOtp] = useState(["", "", "", "", ""]);  // ✅ 5-digit OTP
@@ -138,7 +138,7 @@ const OTPVerification = () => {
         localStorage.setItem("resetToken", response.data.resetToken);
 
         setTimeout(() => {
-            navigate(`${BACKEND_URL}/reset-password`);
+            navigate(`${FRONTEND_URL}/reset-password`);
         }, 2000);
     } catch (error) {
         console.error("Error in OTP verification:", error);
