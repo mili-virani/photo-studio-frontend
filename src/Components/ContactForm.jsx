@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Toaster } from "react-hot-toast";
+require('dotenv').config(); // Load environment variables
+
 import toast from "react-hot-toast";
 import Navbar from "./Navbar";
 import "../assets/css/components.css";
 import "../assets/css/contact.css";
 import headerBg from "../assets/img/background/page-header-bg-10.jpg";
 import circleImg from "../assets/img/more/circle.png";
+const BACKEND_URL = process.env.BACKEND_URL;
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -43,7 +47,7 @@ const ContactForm = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/contact", {
+      const response = await fetch(`${BACKEND_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
