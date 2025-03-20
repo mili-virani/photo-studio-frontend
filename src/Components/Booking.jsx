@@ -8,6 +8,7 @@
   import { useLocation } from "react-router-dom";
   import "../assets/css/components.css";
   import "../assets/css/contact.css";
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
   const Booking = () => {
     const [formData, setFormData] = useState({
@@ -58,7 +59,7 @@
       }
 
       try {
-        const response = await fetch("/api/booking", {
+        const response = await fetch(`${BACKEND_URL}/api/booking`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

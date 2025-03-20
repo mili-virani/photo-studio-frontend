@@ -5,6 +5,7 @@ import axios from "axios";
 import "../assets/css/header.css";
 import headerBg from "../assets/img/background/bg-14.jpg";
 import circleImg from "../assets/img/more/circle.png";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Pages = () => {
   const [packages, setPackages] = useState([]);
@@ -29,7 +30,7 @@ const Pages = () => {
 
     const fetchServices = async () => {
       try {
-        const response = await axios.get(`/api/services?category_id=${categoryId}`);
+        const response = await axios.get(`${BACKEND_URL}/api/services?category_id=${categoryId}`);
         setPackages(response.data.data || []);
       } catch (error) {
         console.error("Error fetching services:", error);

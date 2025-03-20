@@ -10,6 +10,7 @@ import Navbar from "./Navbar";
 
 import headerBg from "../assets/img/background/page-header-bg-6.jpg";
 import circleImg from "../assets/img/more/circle.png";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Services = () => {
   const [categories, setCategories] = useState([]); // Ensure state is an array
@@ -28,7 +29,7 @@ const Services = () => {
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("/api/category");
+        const response = await axios.get(`${BACKEND_URL}/api/category`);
         console.log("API Response:", response.data); // Debugging API response
 
         // Extract correct array path (update if API format changes)

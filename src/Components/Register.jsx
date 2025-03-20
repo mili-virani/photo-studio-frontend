@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import bgImage from "../assets/img/background/page-header-bg-10.jpg";
 import circleImage from "../assets/img/more/circle.png";
 import Navbar from "./Navbar";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Register = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post("/api/register", formData, {
+      await axios.post(`${BACKEND_URL}/api/register`, formData, {
         headers: { "Content-Type": "application/json" },
       });
 

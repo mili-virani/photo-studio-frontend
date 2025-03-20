@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/shopcart.css";
 import "../assets/css/components.css";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 import {loadStripe} from '@stripe/stripe-js';
 const Checkout = () => {
@@ -78,7 +79,7 @@ console.log(userId,"useris");
 
     try {
         console.log("Order Data:", orderData);
-        const response = await axios.post("/api/orders", orderData);
+        const response = await axios.post(`${BACKEND_URL}/api/orders`, orderData);
         console.log("Order stored successfully", response.data.order );
 
         if (response.status === 201) {
@@ -101,7 +102,7 @@ const makepayment = async (orderId) => {
     const stripe = await loadStripe("pk_test_51R27VaRr1DGBjnZ20WbPXqRSDWpW8PIRWjcIpvkyM5SI0evdtoXRbn9kBYi2kB7KRPI8ylQtoynAq9Dgs4IMCrtM00pLaQPIVi");
 
     try {
-        const response = await axios.post("/api/create-checkout-session", {
+        const response = await axios.post(`${BACKEND_URL}/api/create-checkout-session`, {
             products: cart.map((item) => ({
                 product_id: item._id,
                 name: item.name,

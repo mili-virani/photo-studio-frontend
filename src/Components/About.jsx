@@ -19,6 +19,7 @@ import starDark from "../assets/img/more/star-dark.png";
 import bg7 from "../assets/img/background/bg-7.jpg";
 import light3 from "../assets/img/more/light-3.png";
 import { FaPlay } from "react-icons/fa"; // Assuming you're using react-icons for icons
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const About = () => {
   const [categoryCount, setCategoryCount] = useState(0);
@@ -29,7 +30,7 @@ const About = () => {
   });
   useEffect(() => {
     axios
-      .get("/api/dashboard-counts") // Adjust API URL
+      .get(`${BACKEND_URL}/api/dashboard-counts`) // Adjust API URL
       .then((response) => {
         setCategoryCount(response.data.categories);
       })
@@ -38,7 +39,7 @@ const About = () => {
       });
   }, []);
   useEffect(() => {
-    fetch("/api/aboutus") // Tamari backend API URL muko
+    fetch(`${BACKEND_URL}/api/aboutus`) // Tamari backend API URL muko
       .then((res) => res.json())
       .then((data) => setAboutData(data))
       .catch((error) => console.error("Error fetching About Us data:", error));
@@ -49,7 +50,7 @@ const About = () => {
     const fetchFeedbackData = async () => {
       try {
         const response = await fetch(
-          "/api/feedback/feedback-stats"
+          `${BACKEND_URL}/api/feedback/feedback-stats`
         ); // Update with your API
         const data = await response.json();
         setFeedbackStats({

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const PaymentSuccess = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const PaymentSuccess = () => {
       }
 
       try {
-        await axios.post("/api/update-payment-status", { session_id: sessionId });
+        await axios.post(`${BACKEND_URL}/api/update-payment-status`, { session_id: sessionId });
         console.log("Payment status updated successfully");
         localStorage.removeItem("cart"); // Clear cart after successful payment
         localStorage.removeItem("orderId");
