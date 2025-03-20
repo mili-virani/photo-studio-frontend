@@ -116,7 +116,7 @@ const Shop = () => {
                     <div className="product_item" key={product.id}>
                       <div className="product_thumb">
                         <div className="product_imagebox">
-                          <img className="primary_img" src={product.image} alt={product.name} />
+                          <img className="primary_img" src={BACKEND_URL+ product.image} alt={product.name} />
                           <div className="cart_button">
                             <button onClick={() => addToCart(product)} className="btn" type="button">
                               Add to Cart
