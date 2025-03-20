@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/feedback" element={<FeedbackForm />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/otp-verification" element={<OTPVerification />} />
         <Route path="/logout" element={<Logout />} />

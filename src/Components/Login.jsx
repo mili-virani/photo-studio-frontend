@@ -159,7 +159,7 @@ const Login = () => {
                               Remember Password
                             </label>
                           </div>
-                          <a href={`/forgot-password`} className="text-white fw-bold">
+                          <a href={`/forgotPassword`} className="text-white fw-bold">
                             Forgot Password?
                           </a>
                         </div>
