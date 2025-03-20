@@ -1,43 +1,118 @@
-/* Increase font size and set color to white */
+/* General Styles */
+.header {
+  padding: 4px 20px !important; /* Reduce horizontal padding */
+  background-color: #222; /* Adjust as needed */
+}
+
+/* Flexbox Fix for Wrapping Issue */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevents wrapping */
+  width: 100%;
+}
+
+/* Logo Adjustments */
+.logo img {
+  max-width: 80px; /* Adjust logo size */
+  height: auto;
+}
+
+/* Navigation Menu */
+.mainnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.main-menu {
+  display: flex;
+  gap: 0px; /* Adjust spacing */
+  flex-wrap: nowrap; /* Prevents items from wrapping */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-menu li {
+  position: relative;
+}
+
 .main-menu li a {
-  font-size: 16px !important; /* Adjust size as needed */
+  font-size: 16px !important; /* Adjusted to prevent overflow */
   color: white !important;
   font-weight: bold;
+  text-decoration: none;
+  padding: 5px 10px; /* Reduce padding */
+  display: inline-block;
 }
 
-/* Increase font size for dropdown menu */
+/* Dropdown Menu */
+.sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.main-menu li:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu li {
+  padding: 8px;
+}
+
 .sub-menu li a {
-  font-size: 16px; /* Adjust size */
+  font-size: 14px;
   color: white !important;
+  padding: 5px 10px;
+  display: block;
 }
 
-/* Change color on hover */
+/* Hover Effects */
 .main-menu li a:hover,
 .sub-menu li a:hover {
   color: #f8c146 !important; /* Highlight color */
 }
 
-/* Increase font size for cart icon */
-
-/* Increase font size for search icon */
+/* Search Icon */
 .modal_search_icon i {
   font-size: 22px;
   color: white !important;
 }
 
+/* Cart & Notification Section */
+.header_right_part {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Cart Icon */
 .cart-container {
   position: relative;
   display: inline-block;
 }
 
-/* Adjust badge position and size */
+.cart-button i {
+  font-size: 30px;
+  color: white;
+}
+
 .cart-badge {
   position: absolute;
-  top: -5px; /* Move it closer to the cart */
-  right: -10px; /* Adjust to center properly */
+  top: -5px;
+  right: -10px;
   background-color: red;
   color: white;
-  font-size: 12px; /* Reduce size */
+  font-size: 12px;
   font-weight: bold;
   width: 18px;
   height: 18px;
@@ -47,16 +122,7 @@
   justify-content: center;
 }
 
-/* Adjust cart icon size */
-.cart-button svg {
-  width: 30px; /* Adjust as needed */
-  height: 30px;
-}
-
-.header{
-  padding: 4px 50px !important;
-}
-
+/* Notification Icon */
 .notification-container {
   position: relative;
 }
@@ -78,6 +144,7 @@
   border-radius: 50%;
 }
 
+/* Notification Dropdown */
 .notification-dropdown {
   position: absolute;
   right: 0;
@@ -90,4 +157,23 @@
   z-index: 1000;
 }
 
+.header .mainnav ul.main-menu > li + li {
+  margin-left: 50px !important;
+}
 
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .main-menu {
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+  }
+
+  .main-menu li a {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .cart-button i,
+  .modal_search_icon i {
+    font-size: 24px;
+  }
+}
