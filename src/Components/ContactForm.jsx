@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { Toaster } from "react-hot-toast";
-require('dotenv').config(); // Load environment variables
-
 import toast from "react-hot-toast";
 import Navbar from "./Navbar";
 import "../assets/css/components.css";
 import "../assets/css/contact.css";
 import headerBg from "../assets/img/background/page-header-bg-10.jpg";
 import circleImg from "../assets/img/more/circle.png";
-const BACKEND_URL = process.env.BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
