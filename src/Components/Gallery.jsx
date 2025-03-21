@@ -1,120 +1,160 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import circleImage from "../assets/img/more/circle.png";
+import { recognizeFace, getAllPhotos, removeDuplicates } from "../utils/api";
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import "../assets/css/gallery.css";
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Gallery = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([]); // Stores displayed images
+  const [allProjects, setAllProjects] = useState([]); // Stores all images
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
+  // Fetch all images on component mount
   useEffect(() => {
-    const fetchGallery = async () => {
-      try {
-        const response = await axios.get(`${BACKEND_URL}/api/gallery`);
-        setProjects(response.data);
-      } catch (error) {
-        setError("Failed to load gallery data.");
-        console.error("Error fetching gallery data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchGallery();
-  });
-
-  const openModal = (index) => {
-    setSelectedImage(index);
-  };
-
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
-
-  const prevImage = (e) => {
-    e.stopPropagation();
-    setSelectedImage((prev) => (prev > 0 ? prev - 1 : projects.length - 1));
-  };
-
-  const nextImage = (e) => {
-    e.stopPropagation();
-    setSelectedImage((prev) => (prev < projects.length - 1 ? prev + 1 : 0));
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowLeft") prevImage(e);
-      if (e.key === "ArrowRight") nextImage(e);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // const fetchGallery = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const data = await getAllPhotos();
+  //     setProjects(data); // Show all photos initially
+  //     setAllProjects(data);
+  //   } catch (error) {
+  //     setError("Failed to load gallery.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  const fetchGallery = async () => {
+    try {
+      setLoading(true);
+      const data = await getAllPhotos();
+      
+      console.log("API Response:", data); // Debugging
+  
+      if (data && data.length > 0) {
+        setProjects(data.photos);
+        setAllProjects(data.photos);
+      } else {
+        setError("No photos available from API.");
+      }
+    } catch (error) {
+      setError("Failed to load gallery.");
+      console.error("Error fetching photos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      setUploading(true);
+      setError(null);
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await recognizeFace(formData);
+      if (response && response.matchedPhotos) {
+        setProjects(response.matchedPhotos); // Show only matching photos
+      } else {
+        setError("No matching faces found.");
+      }
+    } catch (error) {
+      setError("Error recognizing face.");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const resetGallery = () => {
+    setProjects(allProjects); // Reset to all photos
+    setError(null);
+  };
+
+  const handleRemoveDuplicates = async () => {
+    try {
+      const response = await removeDuplicates();
+      if (response && response.success) {
+        fetchGallery(); // Refresh gallery after removing duplicates
+      } else {
+        setError("Error removing duplicates.");
+      }
+    } catch (error) {
+      setError("Error removing duplicates.");
+    }
+  };
+
   return (
-    <main className={`wrapper ${selectedImage !== null ? "blur-background" : ""}`}>
+    <main className="wrapper">
       {/* Page Header */}
       <div className="wptb-page-heading">
         <div
           className="wptb-item--inner"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
-          <div className="wptb-item-layer wptb-item-layer-one">
-            <img src={circleImage} alt="circle" />
-          </div>
           <h2 className="wptb-item--title">Our Photos</h2>
         </div>
       </div>
 
-      {/* Gallery Section */}
+      {/* Buttons */}
+      <div className="text-center my-4">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleUpload}
+          style={{ display: "none" }}
+          id="upload-input"
+        />
+        <label htmlFor="upload-input" className="btn btn-primary mx-2">
+          {uploading ? "Searching..." : "Upload Image for Face Search"}
+        </label>
+
+        {projects.length !== allProjects.length && (
+          <button className="btn btn-secondary mx-2" onClick={resetGallery}>
+            Show All Photos
+          </button>
+        )}
+
+        <button className="btn btn-danger mx-2" onClick={handleRemoveDuplicates}>
+          Remove Duplicates
+        </button>
+      </div>
+
+      {/* Gallery */}
       <section className="py-5">
         <div className="container">
-          <div className="wptb-heading text-center mb-4">
-            <h1 className="wptb-item--title">Beautiful memories are captured here</h1>
-          </div>
-
           {loading ? (
             <p className="text-center">Loading...</p>
           ) : error ? (
             <p className="text-center text-danger">{error}</p>
           ) : (
             <div className="row">
-              {projects.map((project, index) => (
-                <div key={project._id} className="col-md-4 mb-4">
-                  <div
-                    className="card bg-transparent border-none shadow-lg"
-                    onClick={() => openModal(index)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <img
-                      src={BACKEND_URL+project.image_url}
-                      alt={project.title}
-                      className="card-img-top img-fluid object-fit-cover"
-                      style={{ height: "500px", width: "100%" }}
-                    />
+              {projects.length > 0 ? (
+                projects.map((project) => (
+                  <div key={project._id} className="col-md-4 mb-4">
+                    <div className="card bg-transparent border-none shadow-lg">
+                      <img
+                        src={project.image || "logo.svg"}
+                        alt="Gallery Image"
+                        className="card-img-top img-fluid object-fit-cover"
+                        style={{ height: "500px", width: "100%" }}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <p className="text-center">No photos available.</p>
+              )}
             </div>
           )}
         </div>
       </section>
-
-      {/* Modal for Image Preview */}
-      {selectedImage !== null && (
-        <div className="modal-overlay-gallery" onClick={closeModal}>
-          <div className="modal-content-gallery" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn-gallery" onClick={closeModal} >
-            &times;</button>
-            <button className="nav-btn left" onClick={prevImage} >&#10094;</button>
-            <img src={BACKEND_URL+projects[selectedImage].image_url} alt="Preview" className="modal-image-gallery" />
-            <button className="nav-btn right" onClick={nextImage}>&#10095;</button>
-          </div>
-        </div>
-      )}
     </main>
   );
 };
