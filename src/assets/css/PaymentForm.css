@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    background-image: url("../img/background/bg-11.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Ensures Back and Next are aligned */
+    width: 100%; /* Ensures uniform width */
+}
+
+.payment-container {
+    width: 450px; /* Fixed width to prevent shifting */
+    max-width: 90%;
+    height: 600px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #dadada;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers buttons */
+}
+
+
+
+h2 {
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #000000;
+    margin-bottom: 35px;
+}
+
+.color_change {
+    color: black;
+}
+
+/* input {
+    background-color: white !important;
+    color: black !important;
+    padding: 10px;
+    border: 1px solid #aaa;
+    Slightly darker border */
+    /* border-radius: 5px; */
+    /* Smooth corners
+} */
+
+
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    font-weight: bold;
+    display: block;
+    color: black;
+    margin-bottom: 5px;
+}
+
+/* .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+} */
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.radio-label:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+
+.button-group {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.next-btn,
+.back-btn,
+.finish-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.back-btn {
+    background-color: #007bff;
+}
+
+.finish-btn {
+    background-color: #ff9800;
+}
+
+.next-btn:hover,
+.back-btn:hover,
+.finish-btn:hover {
+    opacity: 0.8;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 10px; /* Reduce top margin */
+    padding: 10px; /* Reduce padding */
+    color: black !important;
+  }
+  
+  .text-center h3 {
+    margin: 5px 0; /* Reduce margin between headings */
+    font-size: 30px; /* Adjust font size */
+  }
+  
+  .text-center img {
+    width: 130px; /* Adjust image size */
+    height: 120px; /* Maintain aspect ratio */
+    margin: 10px 0; /* Reduce margin around image */
+  }
+  
+  .text-center h5 {
+    margin: 5px 0; /* Reduce margin between text */
+    color: black;
+  }
+
+  .order-number, .text-center h4{
+    color: black;
+  }
+
+/* Floating label styles */
+.MuiFormLabel-root {
+    color: rgba(0, 0, 0, 0.6) !important;
+    font-size: 1rem !important;
+  }
+  
+  .MuiInputLabel-outlined.MuiInputLabel-shrink {
+    transform: translate(14px, -6px) scale(0.75) !important;
+    background: #dadada;
+    padding: 0 5px !important;
+  }
+  
+  .MuiOutlinedInput-input {
+    padding: 16.5px 14px !important;
+  }
+  
+  .MuiInputLabel-outlined {
+    transform: translate(14px, 16px) scale(1) !important;
+  }
+
+  .payment-container {
+    width: 450px;
+    max-width: 90%;
+    height: 600px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f8f8f8; /* Lighter grey background */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Floating label adjustments */
+.MuiInputLabel-outlined.MuiInputLabel-shrink {
+    transform: translate(14px, -6px) scale(0.75) !important;
+    background: #f8f8f8; /* Match container background */
+    padding: 0 5px !important;
+}
+
+/* Rest of your existing CSS remains the same */

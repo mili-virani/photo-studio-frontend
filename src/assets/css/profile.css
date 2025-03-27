@@ -1,0 +1,89 @@
+.dup-login-form {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100vh; /* Make it take full viewport height */
+  width: 100 vw;
+}
+
+.dup-wptb-form--wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px !important;
+  height: auto !important;
+  min-height: 500px; /* Ensure it's not too small */
+  padding: 20px;
+}
+
+.row-profile{
+  justify-content: center !important;
+  align-items: center !important;
+  width: 900px !important;
+}
+
+.form-card{
+  text-align: center !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5) ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: black;
+    padding: 20px;
+    border-radius: 8px;
+    width: 420px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .modal-buttons {
+    margin-top: 15px;
+    display: flex;
+  }
+  
+  .modal-buttons button {
+    margin: 5px;
+  }
+
+  .modal-buttons .btn-success {
+    background: #28a745;
+    color: white;
+    width: 160px !important;
+  }
+  
+  .modal-buttons .btn-success:hover {
+    background: #45c362;
+  }
+  
+  .modal-buttons .btn-danger {
+    background: #dc3545;
+    color: white;
+    font-size: 18px !important;
+  }
+  
+  .modal-buttons .btn-danger:hover {
+    background: #ff5c5c;
+  }
+
+.form-card{
+  font-size: 18px !important;
+}
+
+.wptb-item--description{
+  font-size: 18px !important;
+}
+  

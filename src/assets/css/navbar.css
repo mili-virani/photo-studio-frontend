@@ -1,0 +1,179 @@
+/* General Styles */
+.header {
+  padding: 4px 20px !important; /* Reduce horizontal padding */
+  background-color: #222; /* Adjust as needed */
+}
+
+/* Flexbox Fix for Wrapping Issue */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevents wrapping */
+  width: 100%;
+}
+
+/* Logo Adjustments */
+.logo img {
+  max-width: 80px; /* Adjust logo size */
+  height: auto;
+}
+
+/* Navigation Menu */
+.mainnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.main-menu {
+  display: flex;
+  gap: 0px; /* Adjust spacing */
+  flex-wrap: nowrap; /* Prevents items from wrapping */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-menu li {
+  position: relative;
+}
+
+.main-menu li a {
+  font-size: 16px !important; /* Adjusted to prevent overflow */
+  color: white !important;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px 10px; /* Reduce padding */
+  display: inline-block;
+}
+
+/* Dropdown Menu */
+.sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.main-menu li:hover .sub-menu {
+  display: block;
+}
+
+.sub-menu li {
+  padding: 8px;
+}
+
+.sub-menu li a {
+  font-size: 14px;
+  color: white !important;
+  padding: 5px 10px;
+  display: block;
+}
+
+/* Hover Effects */
+.main-menu li a:hover,
+.sub-menu li a:hover {
+  color: #f8c146 !important; /* Highlight color */
+}
+
+/* Search Icon */
+.modal_search_icon i {
+  font-size: 22px;
+  color: white !important;
+}
+
+/* Cart & Notification Section */
+.header_right_part {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Cart Icon */
+.cart-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-button i {
+  font-size: 30px;
+  color: white;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Notification Icon */
+.notification-container {
+  position: relative;
+}
+
+.notification-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 250px;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.header .mainnav ul.main-menu > li + li {
+  margin-left: 50px !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .main-menu {
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+  }
+
+  .main-menu li a {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .cart-button i,
+  .modal_search_icon i {
+    font-size: 24px;
+  }
+}

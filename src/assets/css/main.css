@@ -1,0 +1,50 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1. Fonts, Icons and Other Styles Import
+2. Reset
+  2-1. Body, Font, Container, Space
+  2-2. Placeholder Customize
+  2-3. Social Icons Color
+  2-4. Input, Textarea (All forms field) customization
+  2-5. Button Styling
+-----------------------------------------------------------------*/
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sora:wght@100..800&display=swap');
+
+/* Bootstrap Icons */
+@import url("../fonts/bootstrap-icons-1.1/font/bootstrap-icons.css");
+
+/* Bootstrap CSS */
+@import url("bootstrap.min.css");
+
+/* jQuery UI (Ensure this path is correct, or remove if not needed) */
+@import url("../../plugins/jquery_ui/style.css");
+
+/* Animation */
+@import url("animation.css");
+
+/* Plugins - Correct the paths based on your structure */
+@import url("../../plugins/swiper/swiper-bundle.min.css");
+@import url("../../plugins/swiper/swiper-gl.min.css");
+@import url("../../plugins/odometer/odometer-theme-default.css");
+@import url("../../plugins/fancybox/jquery.fancybox.css");
+@import url("../../plugins/flatpickr/flatpickr.css");
+@import url("../../plugins/nice-select/nice-select.css");
+@import url("../../plugins/cursor-effect/cursor-effect.css");
+
+/* Global styles */
+@import url("global.css");
+@import url("header.css");
+@import url("footer.css");
+@import url("preloader.css");
+@import url("shop.css");
+@import url("components.css");
+@import url("contact.css");
+@import url("blog.css");
+@import url("sidebar.css");
+@import url("portfolio.css");
+@import url("style.css");
+@import url("responsive.css");
+@import url("light.css");
