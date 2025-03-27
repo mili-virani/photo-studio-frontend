@@ -73,7 +73,7 @@ const Users = () => {
                                 <div key={user.face_id} className="user-card">
                                     {/* Clickable Image */}
                                     <img
-                                        src={`http://68.183.93.60/py/face_recognization/${user.image}`}
+                                        src={user.image}
                                         alt={user.name}
                                         className="user-image"
                                         onClick={() => handleImageClick(user.face_id)} // Open modal on click
