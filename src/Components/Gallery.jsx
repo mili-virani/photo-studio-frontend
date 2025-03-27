@@ -185,7 +185,7 @@ const Gallery = () => {
                 <div key={project._id} className="masonry-item">
                   <div className="image-container">
                     <img
-                      src={`http://68.183.93.60/py/face_recognization/${project.photopath}`}
+                      src={`https://68.183.93.60/py/face_recognization/${project.photopath}`}
                       alt="Gallery"
                       className="masonry-image"
                       onClick={() => openModal(index)}
@@ -203,7 +203,7 @@ const Gallery = () => {
                             face.person_photo ? (
                               <img
                                 key={faceIndex}
-                                src={`http://68.183.93.60/py/face_recognization/${face.person_photo}`}
+                                src={`https://68.183.93.60/py/face_recognization/${face.person_photo}`}
                                 alt={`Person ${faceIndex}`}
                                 className="overlay-face"
                               />
@@ -229,7 +229,7 @@ const Gallery = () => {
               &#10094;
             </button>
             <img
-              src={`http://68.183.93.60/py/face_recognization/${projects[currentImageIndex].photopath}`}
+              src={`https://68.183.93.60/py/face_recognization/${projects[currentImageIndex].photopath}`}
               alt="Preview"
               className="modal-image-gallery"
             />
