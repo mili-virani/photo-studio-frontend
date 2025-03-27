@@ -55,7 +55,7 @@ export default function GalleryModal({ isOpen, setIsOpen, personId }) {
                     <button onClick={prevImage} className="nav-button left">&lt;</button>
 
                     <img 
-                        src={`http://68.183.93.60/py/face_recognization/${selectedImage?.photopath}`} 
+                        src={selectedImage?.photopath}
                         alt={selectedImage?.image_id} 
                         className="main-image" 
                     />
@@ -68,7 +68,7 @@ export default function GalleryModal({ isOpen, setIsOpen, personId }) {
                     {images.map((img) => (
                         <img
                             key={img?.image_id}
-                            src={`http://68.183.93.60/py/face_recognization/${img?.photopath}`}
+                            src={img?.photopath}
                             alt={img.image_id}
                             className={`thumbnail ${img.image_id === selectedImage?.image_id ? "selected" : ""}`}
                             onClick={() => setSelectedImage(img)}

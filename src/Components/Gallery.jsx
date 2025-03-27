@@ -219,7 +219,7 @@ const Gallery = () => {
         </div>
       </section>
 
-      {modalOpen && projects.length > 0 && (
+      {/* {modalOpen && projects.length > 0 && (
         <div className="modal-overlay-gallery" onClick={closeModal}>
           <div className="modal-content-gallery" onClick={(e) => e.stopPropagation()}>
             <button className="close-btn-gallery" onClick={closeModal}>
@@ -238,7 +238,43 @@ const Gallery = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
+      {modalOpen && projects.length > 0 && (
+  <div className="modal-overlay-gallery" onClick={closeModal}>
+    <button className="close-btn-gallery" onClick={closeModal}>
+      &times;
+    </button>
+    <button
+      className="nav-btn left"
+      onClick={(e) => {
+        e.stopPropagation();
+        prevImage();
+      }}
+    >
+      &#10094;
+    </button>
+    <div
+      className="modal-content-gallery"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <img
+        src={projects[currentImageIndex].photopath}
+        alt="Preview"
+        className="modal-image-gallery"
+      />
+    </div>
+    <button
+      className="nav-btn right"
+      onClick={(e) => {
+        e.stopPropagation();
+        nextImage();
+      }}
+    >
+      &#10095;
+    </button>
+  </div>
+)}
+
     </main>
   );
 };

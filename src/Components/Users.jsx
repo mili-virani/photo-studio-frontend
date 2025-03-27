@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAllPersons, updatePersonName } from "../utils/api";
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import { FaEdit, FaSave } from "react-icons/fa";
 import "../assets/css/users.css";
-import GalleryModal from "../Components/GalleryModal"; // Import GalleryModal
+// import GalleryModal from "../Components/GalleryModal"; // Import GalleryModal
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -11,8 +12,10 @@ const Users = () => {
     const [error, setError] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [editedName, setEditedName] = useState("");
-    const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-    const [selectedPersonId, setSelectedPersonId] = useState(null); // Store selected user ID
+    // const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+    // const [selectedPersonId, setSelectedPersonId] = useState(null); // Store selected user ID
+
+    const navigate = useNavigate(); // Add
 
     useEffect(() => {
         fetchUsers();
@@ -50,9 +53,13 @@ const Users = () => {
         }
     };
 
+    // const handleImageClick = (personId) => {
+    //     setSelectedPersonId(personId);
+    //     // setIsGalleryOpen(true);
+    // };
+
     const handleImageClick = (personId) => {
-        setSelectedPersonId(personId);
-        setIsGalleryOpen(true);
+        navigate(`/photos/${personId}`); // Redirect
     };
 
     return (
@@ -112,14 +119,14 @@ const Users = () => {
                 </div>
             </section>
 
-            {/* Gallery Modal */}
+            {/* Gallery Modal
             {isGalleryOpen && (
                 <GalleryModal
                     isOpen={isGalleryOpen}
                     setIsOpen={setIsGalleryOpen}
                     personId={selectedPersonId}
                 />
-            )}
+            )} */}
         </main>
     );
 };
