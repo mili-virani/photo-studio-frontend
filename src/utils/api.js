@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const loginid = "67dbd2bb85ece786b30652c2";
-const BASE_URL = "/api";
+// const BASE_URL = "/api";
 
 // Upload image & recognize face
 export const recognizeFace = async (formData) => {
@@ -22,7 +22,7 @@ export const recognizeFace = async (formData) => {
 // Get all photos
 export const getAllPhotos = async () => {
     try {
-        const response = await fetch(`${BASE_URL}/get_photos`, {
+        const response = await fetch(`/get_photos`, {
             method: "GET",
             headers: {
                 "loginid": loginid,
@@ -77,7 +77,7 @@ export const getPersonGallery = async (personId) => {
 // Remove duplicate images 
 export const removeDuplicates = async () => {
     try {
-        const response = await axios.post(`${BASE_URL}/remove_duplicates`,{},{
+        const response = await axios.post(`/remove_duplicates`,{},{
             headers: { 
                 "loginid": loginid 
             }
