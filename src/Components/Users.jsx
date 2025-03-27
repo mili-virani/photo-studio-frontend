@@ -59,7 +59,7 @@ const Users = () => {
         <main className="wrapper">
             <div className="wptb-page-heading">
                 <div className="wptb-item--inner" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                    <h2 className="wptb-item--title">Our Photos</h2>
+                    <h2 className="wptb-item--title">All Users</h2>
                 </div>
             </div>
             <section className="py-5">
