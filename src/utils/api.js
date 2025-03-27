@@ -6,7 +6,7 @@ const loginid = "67dbd2bb85ece786b30652c2";
 // Upload image & recognize face
 export const recognizeFace = async (formData) => {
     try {
-        const response = await axios.post(`${BASE_URL}/recognize`, formData, {
+        const response = await axios.post(`/recognize`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 loginid: loginid
@@ -45,7 +45,7 @@ export const getAllPhotos = async () => {
 // Get all recognized persons
 export const getAllPersons = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}/get_persons`,{
+        const response = await axios.get(`/get_persons`,{
             headers: { 
                 "loginid": loginid 
             }
@@ -61,7 +61,7 @@ export const getAllPersons = async () => {
 // Get specific person's gallery
 export const getPersonGallery = async (personId) => {
     try {
-        const response = await axios.get(`${BASE_URL}/get_person_gallery`, {
+        const response = await axios.get(`/get_person_gallery`, {
             params: { person_id: personId },
             headers: { 
                 "loginid": loginid 
@@ -92,7 +92,7 @@ export const removeDuplicates = async () => {
 export const deletePhoto = async (imageId) => {
     try {
         const response = await axios.post(
-            `${BASE_URL}/delete_photos`,
+            `/delete_photos`,
             { image_ids: [imageId] }, 
             { headers: { "loginid": loginid } } 
         );
@@ -109,7 +109,7 @@ export const updatePersonName = async (personId, newName) => {
         formData.append("person_id", personId);
         formData.append("new_name", newName);
 
-        const response = await axios.post(`${BASE_URL}/update_person_name`, formData, {
+        const response = await axios.post(`/update_person_name`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 "loginid": loginid
