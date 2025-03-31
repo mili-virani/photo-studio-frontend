@@ -8,6 +8,7 @@ import { FaTrash } from "react-icons/fa";
 import { LuUpload } from "react-icons/lu";
 import { GoTrash } from "react-icons/go";
 import { FaUsers } from "react-icons/fa6";
+import { FiDownload } from "react-icons/fi";
 
 const Gallery = () => {
   const [projects, setProjects] = useState([]);
@@ -86,18 +87,18 @@ const Gallery = () => {
   const handleUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-  
+
     try {
       const formData = new FormData();
       formData.append("image", file);
-  
+
       await recognizeFace(formData); // Just call the API, no state updates
     } catch (error) {
       console.error("Error recognizing face:", error);
     }
     fetchGallery();
   };
-  
+
   const resetGallery = () => {
     setProjects(allProjects);
     setError(null);
@@ -167,16 +168,43 @@ const Gallery = () => {
     }
   };
 
+  // const openModal = (index) => {
+  //   console.log("Opening modal for index:", index);
+  //   setCurrentImageIndex(index);
+  //   setModalOpen(true);
+  // };
+
   const openModal = (index) => {
     console.log("Opening modal for index:", index);
     setCurrentImageIndex(index);
     setModalOpen(true);
   };
 
+
   const closeModal = () => {
     console.log("Closing modal...");
     setModalOpen(false);
   };
+
+  const downloadImage = async (url, filename) => {
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const link = document.createElement("a");
+
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Release memory
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+    }
+  };
+
 
   // const nextImage = () => {
   //   setCurrentImageIndex((prevIndex) => (prevIndex + 1) % projects.length);
@@ -244,18 +272,45 @@ const Gallery = () => {
               {projects.map((project, index) => (
                 <div key={project._id} className="masonry-item">
                   <div className="image-container">
-                    <img
+                    {/* <img
                       src={project.photopath}
                       alt="Gallery"
                       className="masonry-image"
                       onClick={() => openModal(index)}
+                    /> */}
+                    <img
+                      src={project.photopath}
+                      alt="Gallery"
+                      className="masonry-image"
+                      onClick={(e) => {
+                        // Only open modal if the click is directly on the image, not on buttons
+                        if (e.target.tagName === 'IMG') {
+                          openModal(index);
+                        }
+                      }}
                     />
+
 
                     {/* Hover Effects */}
                     <div className="hover-overlay">
                       <button className="delete-btn" onClick={() => handleDelete(project.image_id)}>
                         <FaTrash size={20} color="white" />
                       </button>
+
+                      {/* Download Button */}
+                      <button
+                        className="download-btn"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Stop event from bubbling to parent elements
+                          e.preventDefault(); // Prevent any default behavior
+                          downloadImage(project.photopath, `image-${Date.now()}.jpg`);
+                          
+                        }}
+                      >
+                       <FiDownload color="white" size={30}/>
+                      </button>
+
+
 
                       <div className="overlay-container">
                         {project.matched_faces &&

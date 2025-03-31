@@ -347,6 +347,32 @@
   color: white;
 }
 
+.download-btn {
+  /* margin-top: 8px;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor:pointer;
+  font-size: 14px; */
+  position: absolute;
+  pointer-events: auto; /* Ensures delete button is still clickable */
+  /* background: #28a745; */
+  background: none;
+  right: 0px;
+  top: -12px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #218838;
+}
+
+
 
   
   
