@@ -46,8 +46,6 @@ const ForgotPassword = () => {
     }
   };
   
-  
-
   return (
     <div>
       <Toaster />

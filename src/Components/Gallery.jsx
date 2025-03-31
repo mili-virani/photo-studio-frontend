@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
-import { recognizeFace, getAllPhotos, getPersonGallery, removeDuplicates, deletePhoto } from "../utils/api";
+import { recognizeFace, getAllPhotos, getPersonGallery, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto } from "../utils/api";
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import "../assets/css/gallery.css";
 import { FaTrash } from "react-icons/fa";
@@ -13,11 +13,15 @@ const Gallery = () => {
   const [projects, setProjects] = useState([]);
   const [allProjects, setAllProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isGenerating, setIsGenerating] = useState(false); // New state for submit button
   const [error, setError] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [removingDuplicates, setRemovingDuplicates] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState("");
+  const [aiGeneratedImage, setAiGeneratedImage] = useState(null);
+  const [saveModalOpen, setSaveModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -79,6 +83,7 @@ const Gallery = () => {
   const resetGallery = () => {
     setProjects(allProjects);
     setError(null);
+    fetchGallery();
   };
 
   const handleRemoveDuplicates = async () => {
@@ -107,6 +112,43 @@ const Gallery = () => {
     }
   };
 
+  const handleApplyAIFilter = async () => {
+    setIsGenerating(true);
+    if (!aiPrompt || projects.length === 0) return;
+    try {
+      const imageId = projects[currentImageIndex]?.image_id;
+      const response = await applyAIFilter(aiPrompt, imageId);
+      
+      if (response?.status === "success") {
+        setAiGeneratedImage(response?.path);
+        setIsGenerating(false);
+        setAiPrompt("");
+        // setIsGenerating(false);
+      }
+      setSaveModalOpen(true);
+    } catch (error) {
+      alert("Error applying AI filter.");
+    }
+  };
+
+  const handleSaveUpdatedPhoto = async () => {
+    try {
+      const imageId = projects[currentImageIndex]?.image_id;
+      const response = await saveUpdatedPhoto(imageId);
+      console.log("response: ", response);
+      if (response?.status === "success") {
+        alert("Image saved successfully.");
+        setSaveModalOpen(false);
+        setModalOpen(false);
+        // setAiGeneratedImage(null);
+        fetchGallery();
+      }
+
+    } catch (error) {
+      alert("Error saving image.");
+    }
+  };
+
   const openModal = (index) => {
     console.log("Opening modal for index:", index);
     setCurrentImageIndex(index);
@@ -118,14 +160,13 @@ const Gallery = () => {
     setModalOpen(false);
   };
 
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % projects.length);
-  };
+  // const nextImage = () => {
+  //   setCurrentImageIndex((prevIndex) => (prevIndex + 1) % projects.length);
+  // };
 
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
-  };
-
+  // const prevImage = () => {
+  //   setCurrentImageIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
+  // };
 
 
   // **Masonry Grid Breakpoints**
@@ -219,61 +260,71 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* {modalOpen && projects.length > 0 && (
-        <div className="modal-overlay-gallery" onClick={closeModal}>
-          <div className="modal-content-gallery" onClick={(e) => e.stopPropagation()}>
+      {modalOpen && projects.length > 0 && (
+        <div className="modal-overlay-gallery">
+          {/* <div className="modal-white-gallery"> */}
+          <div className={`modal-content-gallery`}
+            onClick={(e) => e.stopPropagation()}>
             <button className="close-btn-gallery" onClick={closeModal}>
               &times;
             </button>
-            <button className="nav-btn left" onClick={prevImage}>
-              &#10094;
-            </button>
+
             <img
               src={projects[currentImageIndex].photopath}
               alt="Preview"
-              className="modal-image-gallery"
+              className={`modal-image-gallery ${isGenerating ? "blurred" : ""}`}
+              style={{
+                width: "500px",
+                height: "700px",
+                objectFit: "contain",
+                position: "absolute",
+              }}
             />
-            <button className="nav-btn right" onClick={nextImage}>
-              &#10095;
-            </button>
+            {isGenerating && (
+              <div
+                style={{
+                  position: "relative",
+                  width: "16rem", // 64 * 0.25rem
+                  height: "24rem", // 96 * 0.25rem
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "0.5rem", // Tailwind's rounded-lg
+                  top: "50px",
+                  left:"50px",
+                  // background: "rgba(0, 0, 0, 0)"
+                }}
+              >
+                <div className="loader-class">
+                <div class="loader"></div>
+                <p className="text-white">Generating image...</p>
+                </div>
+              </div>
+            )}
+            <div className="ai-filter-section">
+              <input type="text" placeholder="Enter prompt..." value={aiPrompt} onChange={(e) => setAiPrompt(e.target.value)} />
+              <button type="submit" onClick={handleApplyAIFilter} disabled={isGenerating}
+              >{isGenerating ? "Generating..." : "Submit"}</button>
+            </div>
           </div>
         </div>
-      )} */}
-      {modalOpen && projects.length > 0 && (
-  <div className="modal-overlay-gallery" onClick={closeModal}>
-    <button className="close-btn-gallery" onClick={closeModal}>
-      &times;
-    </button>
-    <button
-      className="nav-btn left"
-      onClick={(e) => {
-        e.stopPropagation();
-        prevImage();
-      }}
-    >
-      &#10094;
-    </button>
-    <div
-      className="modal-content-gallery"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <img
-        src={projects[currentImageIndex].photopath}
-        alt="Preview"
-        className="modal-image-gallery"
-      />
-    </div>
-    <button
-      className="nav-btn right"
-      onClick={(e) => {
-        e.stopPropagation();
-        nextImage();
-      }}
-    >
-      &#10095;
-    </button>
-  </div>
-)}
+        // </div>
+      )}
+
+      {saveModalOpen && (
+        <div className="modal-overlay-gallery" onClick={() => setSaveModalOpen(false)}>
+          <div className="modal-content-gallery" onClick={(e) => e.stopPropagation()}>
+            {aiGeneratedImage && (
+              <div className="ai-preview">
+                <img src={aiGeneratedImage} style={{ width: "400px", height: "600px" }} alt="AI Modified" className="ai-generated-image" />
+                <p>Do you want to save the modified image?</p>
+                <button onClick={handleSaveUpdatedPhoto}>Yes</button>
+                <button onClick={() => setSaveModalOpen(false)}>No</button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
     </main>
   );

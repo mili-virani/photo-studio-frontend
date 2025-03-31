@@ -62,49 +62,6 @@ const OTPVerification = () => {
     }
   };
 
-  // ✅ Updated OTP Verification API Call
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const email = localStorage.getItem("userEmail");
-
-  //   if (!email) {
-  //     toast.error("Email not found! Please request OTP again.");
-  //     return;
-  //   }
-
-  //   const trimmedOtp = otp.map((digit) => digit.trim()).join("");
-
-  //   if (trimmedOtp.length !== 5) {
-  //     toast.error("Please enter a valid 5-digit OTP.");
-  //     return;
-  //   }
-
-  //   setLoading(true);
-
-  //   try {
-  //     const response = await axios.post("${BACKEND_URL}/api/otp/verify-otp", {  // ✅ Updated URL
-  //       email,
-  //       otp: trimmedOtp,
-  //     });
-
-  //     if (response.data.success) {
-  //       toast.success("OTP Verified! Redirecting...");
-  //       const token = response.data.token; 
-  //       console.log("token: ",token);
-
-  //       setTimeout(() => {
-  //         navigate(`/reset-password/${token}`);
-  //       }, 2000);
-  //     } else {
-  //       toast.error("Invalid OTP. Try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error verifying OTP:", error.response?.data || error.message);
-  //     toast.error(error.response?.data?.message || "OTP verification failed.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
   

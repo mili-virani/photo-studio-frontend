@@ -3497,7 +3497,7 @@ Ready Components Stylesheet
 
 /* Avatar */
 .avatar:not(img) {
-    background-color: var(--color-one);
+    /* background-color: var(--color-one); */
     color: var(--color-white);
 }
 

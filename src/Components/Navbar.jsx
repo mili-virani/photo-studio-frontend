@@ -113,12 +113,10 @@ const Navbar = () => {
                       </ul>
                     </li>
                   ) : (
-                    <li className="menu-item menu-item-has-children">
-                      <Link to="/register">Register</Link>
-                      <ul className="sub-menu">
-                        <li className="menu-item"><Link to="/login">Login</Link></li>
-                      </ul>
-                    </li>
+                    <ul>
+                      <li className="menu-item"style={{marginLeft:"20px"}}><Link to="/register">Register</Link></li>
+                      <li className="menu-item" style={{marginLeft:"40px"}}><Link to="/login">Login</Link></li>
+                    </ul>
                   )}
                 </ul>
               </nav>

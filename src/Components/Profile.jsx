@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
-import '../assets/css/profile.css'
-import bgImage from "../assets/img/background/page-header-bg-10.jpg";
-import circleImage from "../assets/img/more/circle.png";
+import '../assets/css/profile.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Profile = () => {
@@ -14,11 +14,13 @@ const Profile = () => {
     email: "",
     phone: "",
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   // Fetch user data from backend
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        setIsLoading(true);
         const token = localStorage.getItem("token");
         const response = await axios.get(`${BACKEND_URL}/api/profile`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -33,6 +35,8 @@ const Profile = () => {
       } catch (error) {
         console.error("Error fetching user data:", error);
         toast.error("Failed to load profile data.");
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -61,63 +65,92 @@ const Profile = () => {
       toast.error("Failed to update profile.");
     }
   };
+  
+  // Generate user avatar from initials
+  const getInitials = (name) => {
+    if (!name) return "U";
+    return name.split(" ").map(part => part[0]).join("").toUpperCase();
+  };
 
   return (
-    <div>
-     
-      <Toaster />
+    <div className="profile-wrapper dark-theme">
+      <Toaster 
+        position="top-right" 
+        toastOptions={{
+          style: {
+            background: '#333',
+            color: '#fff'
+          }
+        }}
+      />
       <main className="wrapper">
-        {/* Background Header Section */}
-        <div className="wptb-page-heading">
-          <div
-            className="wptb-item--inner"
-            style={{ backgroundImage: `url(${bgImage})` }}
-          >
-            <div className="wptb-item-layer wptb-item-layer-one">
-              <img src={circleImage} alt="Circle decoration" />
-            </div>
-            <h2 className="wptb-item--title">My Profile</h2>
-          </div>
-        </div>
-
-        {/* Profile Display Section */}
-        <section>
+        <section className="profile-section" style={{marginTop:"40px"}}>
           <div className="container">
-            <div className="wptb-login-form dup-login-form">
-              <div className="wptb-form--wrapper dup-wptb-form--wrapper">
-                <div className="row-profile justify-content-center">
-                  <div className="col-lg-6 col-md-8" style={{marginLeft:"220px"}}>
-                    <div className="wptb-heading text-center">
-                      <h1 className="wptb-item--title">User Profile</h1>
-                      <p className="wptb-item--description">
-                        Your personal information
-                      </p>
+            <div className="profile-content">
+              <div className="row-profile justify-content-center">
+                <div className="profile-card-container">
+                  {isLoading ? (
+                    <div className="loading-spinner">
+                      <div className="spinner"></div>
+                      <p>Loading your profile...</p>
                     </div>
-
-                    {/* Profile Details Card */}
-                    <div className="form-card p-4">
-                      {user ? (
-                        <div>
-                          <p>
-                            <strong>Username:</strong> {user.username}
-                          </p>
-                          <p>
-                            <strong>Email:</strong> {user.email}
-                          </p>
-                          <p>
-                            <strong>Phone:</strong> {user.phone}
-                          </p>
-                          <button className="btn white-opacity creative" style={{marginTop:"25px"}} onClick={() => setIsModalOpen(true)}>
-                            Edit Profile
-                          </button>
-                          
+                  ) : user ? (
+                    <div className="profile-card">
+                      <div className="profile-header">
+                        <div className="avatar">
+                          <div className="avatar-circle">
+                            {getInitials(user.username)}
+                          </div>
                         </div>
-                      ) : (
-                        <p>Loading user data...</p>
-                      )}
+                        <h1 className="profile-title">{user.username}</h1>
+                      </div>
+                      
+                      <div className="profile-info">
+                        <div className="info-item">
+                          <div className="info-icon">
+                            <i className="fa fa-user"></i>
+                          </div>
+                          <div className="info-content">
+                            <h3>Username</h3>
+                            <p>{user.username}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="info-item">
+                          <div className="info-icon">
+                            <i className="fa fa-envelope"></i>
+                          </div>
+                          <div className="info-content">
+                            <h3>Email</h3>
+                            <p>{user.email}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="info-item">
+                          <div className="info-icon">
+                            <i className="fa fa-phone"></i>
+                          </div>
+                          <div className="info-content">
+                            <h3>Phone</h3>
+                            <p>{user.phone}</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="profile-actions">
+                        <button 
+                          className="edit-profile-btn" 
+                          onClick={() => setIsModalOpen(true)}
+                        >
+                          Edit Profile
+                        </button>
+                      </div>
                     </div>
-                    {/* End Profile Details Card */}
-                  </div>
+                  ) : (
+                    <div className="error-message">
+                      <p>Unable to load profile data. Please try again later.</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -128,49 +161,71 @@ const Profile = () => {
         {isModalOpen && (
           <div className="modal-overlay">
             <div className="modal-content">
-              <h2>Edit Profile</h2>
+              <div className="modal-header">
+                <h2>Edit Profile</h2>
+                <button 
+                  className="close-button" 
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  &times;
+                </button>
+              </div>
+              
               <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label>Username:</label>
+                <div className="form-group">
+                  <label>Username</label>
                   <input
                     type="text"
                     name="username"
                     className="form-control"
                     value={formData.username}
                     onChange={handleChange}
-                  />
+                    placeholder="Enter your username"
+                    style={{color:"black"}}
+                    />
                 </div>
-                <div className="mb-3">
-                  <label>Email:</label>
+                
+                <div className="form-group">
+                  <label>Email</label>
                   <input
                     type="email"
                     name="email"
                     className="form-control"
                     value={formData.email}
                     onChange={handleChange}
-                  />
+                    placeholder="Enter your email"
+                    style={{color:"black"}}
+                    />
                 </div>
-                <div className="mb-3">
-                  <label>Phone:</label>
+                
+                <div className="form-group">
+                  <label>Phone</label>
                   <input
                     type="tel"
                     name="phone"
                     className="form-control"
                     value={formData.phone}
                     onChange={handleChange}
-                  />
+                    placeholder="Enter your phone number"
+                    style={{color:"black"}}
+                    />
                 </div>
 
                 <div className="modal-buttons">
-                  <button type="submit" className="btn btn-success">Save Changes</button>
-                  <button type="button" className="btn btn-danger" onClick={() => setIsModalOpen(false)}>Cancel</button>
+                  <button type="submit" className="save-button">Save Changes</button>
+                  <button 
+                    type="button" 
+                    className="cancel-button" 
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
             </div>
           </div>
         )}
       </main>
-     
     </div>
   );
 };

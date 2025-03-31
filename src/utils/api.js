@@ -45,9 +45,9 @@ export const getAllPhotos = async () => {
 // Get all recognized persons
 export const getAllPersons = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}/get_persons`,{
-            headers: { 
-                "loginid": loginid 
+        const response = await axios.get(`${BASE_URL}/get_persons`, {
+            headers: {
+                "loginid": loginid
             }
         });
 
@@ -63,8 +63,8 @@ export const getPersonGallery = async (personId) => {
     try {
         const response = await axios.get(`${BASE_URL}/get_person_gallery`, {
             params: { person_id: personId },
-            headers: { 
-                "loginid": loginid 
+            headers: {
+                "loginid": loginid
             }
         });
         return response.data;
@@ -77,9 +77,9 @@ export const getPersonGallery = async (personId) => {
 // Remove duplicate images 
 export const removeDuplicates = async () => {
     try {
-        const response = await axios.post(`${BASE_URL}/remove_duplicates`,{},{
-            headers: { 
-                "loginid": loginid 
+        const response = await axios.post(`${BASE_URL}/remove_duplicates`, {}, {
+            headers: {
+                "loginid": loginid
             }
         });
         return response.data;
@@ -93,8 +93,8 @@ export const deletePhoto = async (imageId) => {
     try {
         const response = await axios.post(
             `${BASE_URL}/delete_photos`,
-            { image_ids: [imageId] }, 
-            { headers: { "loginid": loginid } } 
+            { image_ids: [imageId] },
+            { headers: { "loginid": loginid } }
         );
         return response.data;
     } catch (error) {
@@ -123,3 +123,46 @@ export const updatePersonName = async (personId, newName) => {
     }
 };
 
+export const applyAIFilter = async (prompt, imageId) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/ai_filter`, {
+            prompt: prompt,  // Dynamic prompt
+            image_id: imageId  // Dynamic image ID
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                loginid: loginid  // Ensure `loginid` is defined
+            },
+        });
+
+        console.log("Response:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error applying AI filter:", error.response?.data || error.message);
+        return { error: error.response?.data || "AI filter application failed" };
+    }
+};
+
+
+export const saveUpdatedPhoto = async (imageId) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/save_updated_photo`, 
+            { image_id: imageId }, // Sending JSON payload
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    loginid: loginid, // Pass loginid properly
+                },
+            }
+        );
+        console.log("response from util",response);
+        return response.data;
+    } catch (error) {
+        console.error("Error saving updated photo:", error.response?.data || error.message);
+        return { 
+            success: false,
+            message: error.response?.data?.message || "Failed to save updated photo",
+            error: error.response?.data || error.message
+        };
+    }
+};
