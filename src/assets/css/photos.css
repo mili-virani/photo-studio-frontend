@@ -1,9 +1,54 @@
 .photos-page {
     padding: 20px;
 }
+.edit-mode {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
 
-.profile-container{
-    /* display: flex; */
+.edit-input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.edit-button, .save-button, .cancel-button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+}
+
+.profile-header{
+    position: relative;
+}
+
+.view-mode button{
+    position: absolute;
+    top:4px;
+    right: 4px;
+}
+
+.profile-info{
+    padding: 0px !important;
 }
 
 .profile-header {
@@ -45,9 +90,20 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
     gap: 10px;
+    margin-top: 50px !important;
 }
 
 .photo-item {
     width: 100%;
     border-radius: 10px;
 }
+
+/* .profile-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-header{
+    width: 500px !important;
+    align-items: center;
+} */
