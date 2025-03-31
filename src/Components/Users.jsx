@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getAllPersons, updatePersonName } from "../utils/api";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import { FaEdit, FaSave } from "react-icons/fa";
 import "../assets/css/users.css";
-import GalleryModal from "../Components/GalleryModal"; // Import GalleryModal
+// import GalleryModal from "../Components/GalleryModal"; // Import GalleryModal
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -17,6 +18,8 @@ const Users = () => {
     useEffect(() => {
         fetchUsers();
     }, []);
+
+    const navigate = useNavigate(); // Inside your component
 
     const fetchUsers = async () => {
         setLoading(true);
@@ -52,7 +55,7 @@ const Users = () => {
 
     const handleImageClick = (personId) => {
         setSelectedPersonId(personId);
-        setIsGalleryOpen(true);
+        navigate(`/photos/${personId}`);
     };
 
     return (
@@ -112,14 +115,14 @@ const Users = () => {
                 </div>
             </section>
 
-            {/* Gallery Modal */}
+            {/* Gallery Modal
             {isGalleryOpen && (
                 <GalleryModal
                     isOpen={isGalleryOpen}
                     setIsOpen={setIsGalleryOpen}
                     personId={selectedPersonId}
                 />
-            )}
+            )} */}
         </main>
     );
 };

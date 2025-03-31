@@ -24,6 +24,7 @@ import OrderSuccess from "./Components/OrderSuccess";
 import Profile from "./Components/Profile";
 import NotificationDropdown from "./Components/NotificationDropdown";
 import Users from "./Components/Users";
+import Photos from "./Components/Photos";
 
 // import Gallery from './pages/Gallery'; // Example page component
 
@@ -53,9 +54,10 @@ const App = () => {
         <Route path="/otp-verification" element={<OTPVerification />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/ordersuccess" element={<OrderSuccess />} />
-        <Route path="profile" element={<Profile/>}/>
+        <Route path="/profile" element={<Profile/>}/>
         <Route path="/notifications" element={<NotificationDropdown/>}/>
         <Route path="/users" element={<Users/>}/>
+        <Route path="/photos/:personId" element={<Photos />} /> 
         {/* <Route path="/gallery" element={<Gallery />} />
     
   <Route path="/blog" element={<Blog />} /> */}
