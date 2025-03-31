@@ -8,9 +8,9 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const Shop = () => {
   const navigate = useNavigate();
   const [viewType, setViewType] = useState("grid");
-  const [ cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]); // State to store products
-   
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -116,7 +116,7 @@ const Shop = () => {
                     <div className="product_item" key={product.id}>
                       <div className="product_thumb">
                         <div className="product_imagebox">
-                          <img className="primary_img" src={BACKEND_URL+ product.image} alt={product.name} />
+                          <img className="primary_img" src={BACKEND_URL + product.image} alt={product.name} />
                           <div className="cart_button">
                             <button onClick={() => addToCart(product)} className="btn" type="button">
                               Add to Cart
@@ -151,11 +151,17 @@ const Shop = () => {
                       <div className="product_thumb">
                         <div className="product_imagebox">
                           <img className="primary_img" src={BACKEND_URL + product.image} alt={product.name} />
+
                         </div>
                         <div className="product_item_inner">
                           <div className="label_text">
                             <h2 className="product_item_name d-flex align-items-center justify-content-between gap-1 flex-wrap">
                               <a href="shop-product.html">{product.name}</a>
+                              <div className="cart_button" style={{textAlign:"start"}}>
+                                <button onClick={() => addToCart(product)} className="btn" type="button">
+                                  Add to Cart
+                                </button>
+                              </div>
                             </h2>
                           </div>
                         </div>

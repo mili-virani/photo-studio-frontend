@@ -45,6 +45,7 @@
     height: 200px;
     border-radius: 10px;
     object-fit: cover;
+    /* border-radius: 50%; */
 }
 
 /* Name and Edit Section */

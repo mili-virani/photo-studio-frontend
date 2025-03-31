@@ -12,6 +12,10 @@
     font-size: 16px;
 }
 
+.profile-header{
+    background: #464040;
+}
+
 .edit-button, .save-button, .cancel-button {
     padding: 5px 10px;
     font-size: 14px;
@@ -89,8 +93,9 @@
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 1fr));
-    gap: 10px;
+    gap: 30px;
     margin-top: 50px !important;
+    padding: 40px;
 }
 
 .photo-item {

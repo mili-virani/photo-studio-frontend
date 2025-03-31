@@ -12,9 +12,7 @@ const Users = () => {
     const [error, setError] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [editedName, setEditedName] = useState("");
-    const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-    const [selectedPersonId, setSelectedPersonId] = useState(null); // Store selected user ID
-
+   
     useEffect(() => {
         fetchUsers();
     }, []);
@@ -54,7 +52,6 @@ const Users = () => {
     };
 
     const handleImageClick = (personId) => {
-        setSelectedPersonId(personId);
         navigate(`/photos/${personId}`);
     };
 
