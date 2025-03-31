@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
-import { recognizeFace, getAllPhotos, getPersonGallery, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto } from "../utils/api";
+import { recognizeFace, getAllPhotos, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto } from "../utils/api";
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import "../assets/css/gallery.css";
 import { FaTrash } from "react-icons/fa";
@@ -49,37 +49,55 @@ const Gallery = () => {
     }
   };
 
+  // const handleUpload = async (e) => {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
+
+  //   try {
+  //     setUploading(true);
+  //     setError(null);
+
+  //     const formData = new FormData();
+  //     formData.append("image", file);
+
+  //     const response = await recognizeFace(formData);
+  //     if (response && response.faces.length > 0) {
+  //       const personId = response.faces[0]?.person_id;
+  //       const galleryResponse = await getPersonGallery(personId);
+
+  //       if (galleryResponse && galleryResponse.photos.length > 0) {
+  //         setProjects(galleryResponse.photos);
+  //       } else {
+  //         setError("No photos found for this person.");
+  //         setProjects([]); // Ensure "Show All Photos" button appears
+  //       }
+  //     } else {
+  //       setError("No matching faces found.");
+  //       setProjects([]); // Ensure "Show All Photos" button appears
+  //     }
+  //   } catch (error) {
+  //     setError("Error processing face recognition.");
+  //     setProjects([]); // Ensure gallery resets on error
+  //   } finally {
+  //     setUploading(false);
+  //   }
+  // };
+
   const handleUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
+  
     try {
-      setUploading(true);
-      setError(null);
-
       const formData = new FormData();
       formData.append("image", file);
-
-      const response = await recognizeFace(formData);
-      if (response && response.faces.length > 0) {
-        const personId = response.faces[0]?.person_id;
-        const galleryResponse = await getPersonGallery(personId);
-
-        if (galleryResponse && galleryResponse.photos) {
-          setProjects(galleryResponse.photos);
-        } else {
-          setError("No photos found for this person.");
-        }
-      } else {
-        setError("No matching faces found.");
-      }
+  
+      await recognizeFace(formData); // Just call the API, no state updates
     } catch (error) {
-      setError("Error processing face recognition.");
-    } finally {
-      setUploading(false);
+      console.error("Error recognizing face:", error);
     }
+    fetchGallery();
   };
-
+  
   const resetGallery = () => {
     setProjects(allProjects);
     setError(null);
@@ -118,7 +136,7 @@ const Gallery = () => {
     try {
       const imageId = projects[currentImageIndex]?.image_id;
       const response = await applyAIFilter(aiPrompt, imageId);
-      
+
       if (response?.status === "success") {
         setAiGeneratedImage(response?.path);
         setIsGenerating(false);
@@ -200,11 +218,12 @@ const Gallery = () => {
             {uploading ? "  Searching..." : "   Upload"}
           </label>
 
-          {projects.length !== allProjects.length && (
+          {(projects.length !== allProjects.length || projects.length === 0) && (
             <button className="styled-button secondary" onClick={resetGallery}>
               Show All Photos
             </button>
           )}
+
 
           <button className="styled-button warning" onClick={handleRemoveDuplicates} disabled={removingDuplicates}>
             <GoTrash size={20} />
@@ -291,13 +310,13 @@ const Gallery = () => {
                   justifyContent: "center",
                   borderRadius: "0.5rem", // Tailwind's rounded-lg
                   top: "50px",
-                  left:"50px",
+                  left: "50px",
                   // background: "rgba(0, 0, 0, 0)"
                 }}
               >
                 <div className="loader-class">
-                <div class="loader"></div>
-                <p className="text-white">Generating image...</p>
+                  <div class="loader"></div>
+                  <p className="text-white">Generating image...</p>
                 </div>
               </div>
             )}
@@ -311,9 +330,9 @@ const Gallery = () => {
         // </div>
       )}
 
-      {saveModalOpen && (
-        <div className="modal-overlay-gallery" onClick={() => setSaveModalOpen(false)}>
-          <div className="modal-content-gallery" onClick={(e) => e.stopPropagation()}>
+      {/* {saveModalOpen && (
+        <div className="modal2-overlay-gallery" onClick={() => setSaveModalOpen(false)}>
+          <div className="modal2-content-gallery" onClick={(e) => e.stopPropagation()} style={{backgroundColor:"white"}}>
             {aiGeneratedImage && (
               <div className="ai-preview">
                 <img src={aiGeneratedImage} style={{ width: "400px", height: "600px" }} alt="AI Modified" className="ai-generated-image" />
@@ -324,7 +343,31 @@ const Gallery = () => {
             )}
           </div>
         </div>
+      )} */}
+
+      {saveModalOpen && (
+        <div className="modal2-overlay-gallery" onClick={() => setSaveModalOpen(false)}>
+          <div className="modal2-content-gallery" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-body">
+              {aiGeneratedImage && (
+                <div className="ai-preview">
+                  <img
+                    src={aiGeneratedImage}
+                    alt="AI Modified"
+                    className="ai-generated-image"
+                  />
+                  <p className="modal-text">Do you want to save the modified image?</p>
+                  <div className="modal-buttons-photo">
+                    <button className="yes-button" onClick={handleSaveUpdatedPhoto}>Yes</button>
+                    <button className="no-button" onClick={() => setSaveModalOpen(false)}>No</button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       )}
+
 
     </main>
   );
