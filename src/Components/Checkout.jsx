@@ -185,14 +185,14 @@ const Checkout = () => {
                 <h4 className="billing-title">Billing Address</h4>
                 <div className="billing-form">
                   <div className="form-row">
-                    <div className="form-group half-width">
+                    <div className="form-group-checkout half-width">
                       <div className="together">
                         <label>First Name *</label>
                         {errors.fname && <p className="text-red-500 error-checkout">{errors.fname}</p>}
                       </div>
                       <input type="text" name="fname" value={formData.fname} onChange={handleChange} placeholder="First Name" />
                     </div>
-                    <div className="form-group half-width">
+                    <div className="form-group-checkout half-width">
                       <div className="together">
                         <label>Last Name *</label>
                         {errors.lname && <p className="text-red-500 error-checkout">{errors.lname}</p>}
@@ -201,12 +201,12 @@ const Checkout = () => {
                     </div>
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group-checkout">
                     <label>Company Name (Optional)</label>
                     <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Company Name" />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group-checkout">
                     <div className="together">
                       <label>Street Address *</label>
                       {errors.address && <p className="text-red-500 error-checkout">{errors.address}</p>}
@@ -214,7 +214,7 @@ const Checkout = () => {
                     <input type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Street Address" />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group-checkout">
                     <div className="together">
                       <label>Post Code / Zip *</label>
                       {errors.zip && <p className="text-red-500 error-checkout">{errors.zip}</p>}
@@ -222,7 +222,7 @@ const Checkout = () => {
                     <input type="text" name="zip" value={formData.zip} onChange={handleChange} placeholder="Postal Code" />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group-checkout">
                     <div className="together">
                       <label>Phone *</label>
                       {errors.phone && <p className="text-red-500 error-checkout">{errors.phone}</p>}
@@ -230,7 +230,7 @@ const Checkout = () => {
                     <input type="text" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group-checkout">
                     <div className="together">
                       <label>Email *</label>
                       {errors.email && <p className="text-red-500 error-checkout">{errors.email}</p>}
@@ -239,11 +239,11 @@ const Checkout = () => {
                   </div>
 
                   <h4 className="additional-info-title">Additional Information</h4>
-                  <div className="form-group">
+                  <div className="form-group-checkout">
                     <label>Order Notes (Optional)</label>
                     <textarea name="notes" value={formData.notes} onChange={handleChange} placeholder="Notes about your order & delivery"></textarea>
                   </div>
-                  <button className="btn white-opacity creative" type="submit">
+                  <button className="btn white-opacity creative" type="submit" style={{marginTop:"15px"}}>
                     Place Order
                   </button>
                 </div>

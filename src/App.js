@@ -15,7 +15,6 @@ import Checkout from "./Components/Checkout";
 import Footer from "./Components/Footer";
 import FeedbackForm from "./Components/Feedback";
 import Gallery from "./Components/Gallery";
-import Payment from "./Components/Payment";
 import Logout from "./Components/Logout";
 import ForgotPassword from "./Components/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword";
@@ -48,7 +47,6 @@ const App = () => {
         <Route path="/shopcart" element={<Shopcart />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/feedback" element={<FeedbackForm />} />
-        <Route path="/payment" element={<Payment />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/otp-verification" element={<OTPVerification />} />

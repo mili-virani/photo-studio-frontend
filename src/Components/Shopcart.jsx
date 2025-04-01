@@ -97,7 +97,7 @@ const Shopcart = () => {
                 </tbody>
               </table>
 
-              <button type="button" className="styled-button primary button-border" style={{marginTop:"40px"}}>
+              <button type="button" className="styled-button secondary button-border" style={{marginTop:"40px"}}>
                 <Link to="/checkout" style={{ textDecoration: "none", color: "inherit" }}>
                   Proceed To Checkout
                 </Link>

@@ -67,6 +67,10 @@
   cursor: pointer;
 }
 
+/* .styled-button{
+  background: linear-gradient(to bottom, #3eacd0 25%, #f35ca8 100%) !important;
+} */
+
 .cart_removal button {
   background: red;
   color: white;
@@ -144,7 +148,7 @@ coupon-section input::placeholder {
 
 /* Order Summary Styling */
 .order-summary {
-  background: #1a1a1a; /* Dark grey for contrast */
+  background: #4b4949; /* Dark grey for contrast */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
@@ -279,15 +283,16 @@ coupon-section input::placeholder {
   margin-bottom: 5px;
 }
 
-.form-group input, .form-group textarea {
+.form-group-checkout input, .form-group-checkout textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #333;
-  background: #585858;
+  background: #585858 !important;
   border-radius: 5px;
   font-size: 14px;
   color: #f1f1f1;
   transition: 0.3s;
+  margin-bottom: 10px;
 }
 
 .form-group input:focus, .form-group textarea:focus {
