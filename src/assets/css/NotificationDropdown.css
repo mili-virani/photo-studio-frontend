@@ -1,0 +1,106 @@
+/* Notification Bell Button */
+.notification-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .notification-bell {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+  }
+  
+  .notification-bell:hover {
+    opacity: 0.8;
+  }
+  
+  /* Notification Count Badge */
+  .notification-badge {
+    position: absolute;
+    top: 0px;
+    right: -1px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  /* Notification Dropdown */
+  /* .notification-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 330px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 10px;
+  } */
+
+  .notification-dropdown {
+    position: absolute;
+    right: -10px;
+    margin-top: 10px;
+    width: 330px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  /* Curved Tooltip Arrow */
+  .notification-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    right: 22px; /* Adjust to center under the bell */
+    width: 18px;
+    height: 18px;
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notification-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .notification-item {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notification-time {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .no-notifications {
+    font-size: 14px;
+    color: gray;
+    text-align: center;
+    padding: 10px 0;
+  }
+  

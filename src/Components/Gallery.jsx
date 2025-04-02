@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import { recognizeFace, getAllPhotos, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto } from "../utils/api";
-import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
+import backgroundImage from "../assets/img/background/page-header-bg-4.jpg";
 import "../assets/css/gallery.css";
 import { FaTrash } from "react-icons/fa";
 import { LuUpload } from "react-icons/lu";

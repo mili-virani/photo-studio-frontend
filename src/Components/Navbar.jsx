@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import NotificationDropdown from "./NotificationDropdown";
 import { IoMdNotifications } from "react-icons/io";
 import { toast } from "react-toastify";
 import { io } from "socket.io-client";
@@ -134,7 +135,7 @@ const Navbar = () => {
 
               {/* Notification Bell */}
               <div className="notification-container position-relative mx-3" ref={dropdownRef}>
-                <button
+                {/* <button
                   className="notification-button position-relative"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   style={{ background: "none", border: "none", cursor: "pointer" }}
@@ -143,10 +144,16 @@ const Navbar = () => {
                   {notifications.length > 0 && (
                     <span className="notification-badge">{notifications.length}</span>
                   )}
-                </button>
+                </button> */}
+                    {/* <button onClick={() => navigate("/notifications")}>
+                    click
+                    
+                  </button> */}
+                  <NotificationDropdown />
+
 
                 {/* Notification Dropdown */}
-                {isDropdownOpen && (
+                {/* {isDropdownOpen && (
                   <div className="notification-dropdown position-absolute bg-white shadow-lg p-3 rounded" style={{ right: 0, top: "45px", width: "250px" }}>
                     <h4 className="mb-2">Notifications</h4>
                     {notifications.length > 0 ? (
@@ -160,7 +167,7 @@ const Navbar = () => {
                       <p className="text-muted">No new notifications</p>
                     )}
                   </div>
-                )}
+                )} */}
               </div>
 
               {/* Cart Button */}

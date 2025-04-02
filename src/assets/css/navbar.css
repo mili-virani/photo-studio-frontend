@@ -122,41 +122,6 @@
   justify-content: center;
 }
 
-/* Notification Icon */
-.notification-container {
-  position: relative;
-}
-
-.notification-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.notification-badge {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: red;
-  color: white;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 50%;
-}
-
-/* Notification Dropdown */
-.notification-dropdown {
-  position: absolute;
-  right: 0;
-  top: 45px;
-  width: 250px;
-  background: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding: 10px;
-  z-index: 1000;
-}
-
 .header .mainnav ul.main-menu > li + li {
   margin-left: 50px !important;
 }
