@@ -3,10 +3,12 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import '../assets/css/profile.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { Link, useNavigate } from "react-router-dom";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -65,7 +67,7 @@ const Profile = () => {
       toast.error("Failed to update profile.");
     }
   };
-  
+
   // Generate user avatar from initials
   const getInitials = (name) => {
     if (!name) return "U";
@@ -74,8 +76,8 @@ const Profile = () => {
 
   return (
     <div className="profile-wrapper dark-theme">
-      <Toaster 
-        position="top-right" 
+      <Toaster
+        position="top-right"
         toastOptions={{
           style: {
             background: '#333',
@@ -84,7 +86,7 @@ const Profile = () => {
         }}
       />
       <main className="wrapper">
-        <section className="profile-section" style={{marginTop:"40px"}}>
+        <section className="profile-section" style={{ marginTop: "40px" }}>
           <div className="container">
             <div className="profile-content">
               <div className="row-profile justify-content-center">
@@ -104,7 +106,7 @@ const Profile = () => {
                         </div>
                         <h1 className="profile-title">{user.username}</h1>
                       </div>
-                      
+
                       <div className="profile-info">
                         <div className="info-item">
                           <div className="info-icon">
@@ -115,7 +117,7 @@ const Profile = () => {
                             <p>{user.username}</p>
                           </div>
                         </div>
-                        
+
                         <div className="info-item">
                           <div className="info-icon">
                             <i className="fa fa-envelope"></i>
@@ -125,7 +127,7 @@ const Profile = () => {
                             <p>{user.email}</p>
                           </div>
                         </div>
-                        
+
                         <div className="info-item">
                           <div className="info-icon">
                             <i className="fa fa-phone"></i>
@@ -136,10 +138,10 @@ const Profile = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="profile-actions">
-                        <button 
-                          className="edit-profile-btn" 
+                        <button
+                          className="edit-profile-btn"
                           onClick={() => setIsModalOpen(true)}
                         >
                           Edit Profile
@@ -152,6 +154,14 @@ const Profile = () => {
                     </div>
                   )}
                 </div>
+
+                <button className="styled-button secondary " onClick={() => navigate("/mybookings")}>
+                  My Bookings
+                </button>
+
+                <button className="styled-button secondary " onClick={() => navigate("/mybookings")}>
+                  My Orders
+                </button>
               </div>
             </div>
           </div>
@@ -163,14 +173,14 @@ const Profile = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h2>Edit Profile</h2>
-                <button 
-                  className="close-button" 
+                <button
+                  className="close-button"
                   onClick={() => setIsModalOpen(false)}
                 >
                   &times;
                 </button>
               </div>
-              
+
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label>Username</label>
@@ -181,10 +191,10 @@ const Profile = () => {
                     value={formData.username}
                     onChange={handleChange}
                     placeholder="Enter your username"
-                    style={{color:"black"}}
-                    />
+                    style={{ color: "black" }}
+                  />
                 </div>
-                
+
                 <div className="form-group">
                   <label>Email</label>
                   <input
@@ -194,10 +204,10 @@ const Profile = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter your email"
-                    style={{color:"black"}}
-                    />
+                    style={{ color: "black" }}
+                  />
                 </div>
-                
+
                 <div className="form-group">
                   <label>Phone</label>
                   <input
@@ -207,15 +217,15 @@ const Profile = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Enter your phone number"
-                    style={{color:"black"}}
-                    />
+                    style={{ color: "black" }}
+                  />
                 </div>
 
                 <div className="modal-buttons">
                   <button type="submit" className="save-button">Save Changes</button>
-                  <button 
-                    type="button" 
-                    className="cancel-button" 
+                  <button
+                    type="button"
+                    className="cancel-button"
                     onClick={() => setIsModalOpen(false)}
                   >
                     Cancel

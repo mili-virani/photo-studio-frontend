@@ -8,7 +8,7 @@ import { FaTrash } from "react-icons/fa";
 import { LuUpload } from "react-icons/lu";
 import { GoTrash } from "react-icons/go";
 import { FaUsers } from "react-icons/fa6";
-import { FiDownload } from "react-icons/fi";
+import { GoDownload } from "react-icons/go";
 
 const Gallery = () => {
   const [projects, setProjects] = useState([]);
@@ -37,7 +37,7 @@ const Gallery = () => {
 
       const data = await getAllPhotos();
       console.log("data", data);
-      if (data && data.length > 0) {
+      if (data && data?.length > 0) {
         setProjects(data);
         setAllProjects(data);
       } else {
@@ -156,7 +156,7 @@ const Gallery = () => {
       const response = await saveUpdatedPhoto(imageId);
       console.log("response: ", response);
       if (response?.status === "success") {
-        alert("Image saved successfully.");
+        // alert("Image saved successfully.");
         setSaveModalOpen(false);
         setModalOpen(false);
         // setAiGeneratedImage(null);
@@ -269,8 +269,8 @@ const Gallery = () => {
             <p className="text-center text-danger">{error}</p>
           ) : (
             <Masonry breakpointCols={breakpointColumns} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-              {projects.map((project, index) => (
-                <div key={project._id} className="masonry-item">
+              {projects?.map((project, index) => (
+                <div key={project?._id} className="masonry-item">
                   <div className="image-container">
                     {/* <img
                       src={project.photopath}
@@ -279,7 +279,7 @@ const Gallery = () => {
                       onClick={() => openModal(index)}
                     /> */}
                     <img
-                      src={project.photopath}
+                      src={project?.photopath}
                       alt="Gallery"
                       className="masonry-image"
                       onClick={(e) => {
@@ -293,7 +293,7 @@ const Gallery = () => {
 
                     {/* Hover Effects */}
                     <div className="hover-overlay">
-                      <button className="delete-btn" onClick={() => handleDelete(project.image_id)}>
+                      <button className="delete-btn" onClick={() => handleDelete(project?.image_id)}>
                         <FaTrash size={20} color="white" />
                       </button>
 
@@ -303,22 +303,22 @@ const Gallery = () => {
                         onClick={(e) => {
                           e.stopPropagation(); // Stop event from bubbling to parent elements
                           e.preventDefault(); // Prevent any default behavior
-                          downloadImage(project.photopath, `image-${Date.now()}.jpg`);
+                          downloadImage(project?.photopath, `image-${Date.now()}.jpg`);
                           
                         }}
                       >
-                       <FiDownload color="white" size={30}/>
+                       <GoDownload color="white" size={29}/>
                       </button>
 
 
 
                       <div className="overlay-container">
-                        {project.matched_faces &&
-                          project.matched_faces.map((face, faceIndex) =>
-                            face.person_photo ? (
+                        {project?.matched_faces &&
+                          project?.matched_faces?.map((face, faceIndex) =>
+                            face?.person_photo ? (
                               <img
                                 key={faceIndex}
-                                src={face.person_photo}
+                                src={face?.person_photo}
                                 alt={`Person ${faceIndex}`}
                                 className="overlay-face"
                               />
@@ -344,7 +344,7 @@ const Gallery = () => {
             </button>
 
             <img
-              src={projects[currentImageIndex].photopath}
+              src={projects[currentImageIndex]?.photopath}
               alt="Preview"
               className={`modal-image-gallery ${isGenerating ? "blurred" : ""}`}
               style={{
