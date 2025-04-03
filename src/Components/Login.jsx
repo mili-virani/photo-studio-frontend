@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import circleImage from "../assets/img/more/circle.png";
 import bgImage from "../assets/img/background/page-header-bg-8.jpg";
+import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Login = () => {
@@ -81,17 +82,7 @@ const Login = () => {
   return (
     <div className="wrapper">
       <Toaster position="top-center" reverseOrder={false} />
-      <div className="wptb-page-heading">
-               <div
-                 className="wptb-item--inner"
-                 style={{ backgroundImage: `url(${bgImage})` }}
-               >
-                 <div className="wptb-item-layer wptb-item-layer-one">
-                   <img src={circleImage} alt="Circle decoration" />
-                 </div>
-                 <h2 className="wptb-item--title">Login</h2>
-               </div>
-             </div>
+      <Common title="Login" pageHeaderBg={bgImage} circleImg={circleImage} />
 
       <section>
         <div className="container">
@@ -175,7 +166,7 @@ const Login = () => {
 
                         <div className="mt-3 text-center text-white">
                           <p style={{ color: "white" }}>
-                           Don't have an account? <Link to = {`/register`} style={{ color: "yellow", fontWeight: "bold" }}>Register</Link>
+                            Don't have an account? <Link to={`/register`} style={{ color: "yellow", fontWeight: "bold" }}>Register</Link>
                           </p>
                         </div>
 

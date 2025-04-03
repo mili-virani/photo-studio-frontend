@@ -20,6 +20,7 @@ const Profile = () => {
 
   // Fetch user data from backend
   useEffect(() => {
+    document.title = "Profile | Candid Creations"; 
     const fetchUserData = async () => {
       try {
         setIsLoading(true);
@@ -98,7 +99,7 @@ const Profile = () => {
                     </div>
                   ) : user ? (
                     <div className="profile-card">
-                      <div className="profile-header">
+                      <div className="profile-headerr">
                         <div className="avatar">
                           <div className="avatar-circle">
                             {getInitials(user.username)}

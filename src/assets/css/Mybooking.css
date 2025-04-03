@@ -1,0 +1,135 @@
+/* General Styling */
+.booking-container {
+    padding: 30px;
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .booking-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  /* Table Styling */
+  .table-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .booking-table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .booking-table th,
+  .booking-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+  }
+  
+  .booking-table th {
+    background-color: #222;
+    color: #f1f1f1;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .booking-table tr:nth-child(even) {
+    background-color: #292929;
+  }
+  
+  .booking-table tr:hover {
+    background-color: #333;
+  }
+  
+  /* Status Colors */
+  .status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: capitalize;
+  }
+  
+  .status.confirmed {
+    color: #4caf50; /* Green */
+  }
+  
+  .status.pending {
+    color: #ff9800; /* Orange */
+  }
+  
+  .status.failed {
+    color: #ff5252; /* Red */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .booking-table {
+      width: 100%;
+    }
+  }
+
+  .btn-cancel {
+    background-color: #dc2626; /* Red */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .btn-reschedule {
+    background-color: #2563eb; /* Blue */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.swal2-modal{
+    background-color: rgb(30, 29, 29);
+    color: white;
+    box-shadow: 0 0 15px 6px #ffffff55;
+}
+
+#swal-input1{
+    margin: 0px !important;
+    margin-bottom: 10px !important;
+}
+
+#swal-input2{
+    margin: 0px !important;
+}
+
+.swal2-input, input[type="date"]{
+    /* border: white !important; */
+    border: 1px solid #707070 !important;
+}
+
+label{
+    font-size: 16px !important;
+}
+
+.swal2-cancel{
+    background-color: #dc2626;
+}
+
+.swal2-input[type="date"],
+.swal2-input[type="time"] {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}

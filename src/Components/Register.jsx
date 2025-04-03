@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import bgImage from "../assets/img/background/page-header-bg-10.jpg";
 import circleImage from "../assets/img/more/circle.png";
 import Navbar from "./Navbar";
+import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Register = () => {
@@ -80,17 +81,7 @@ const Register = () => {
       <Toaster />
       <main className="wrapper">
         {/* Background Header Section */}
-        <div className="wptb-page-heading">
-          <div
-            className="wptb-item--inner"
-            style={{ backgroundImage: `url(${bgImage})` }}
-          >
-            <div className="wptb-item-layer wptb-item-layer-one">
-              <img src={circleImage} alt="Circle decoration" />
-            </div>
-            <h2 className="wptb-item--title">Register</h2>
-          </div>
-        </div>
+        <Common title="Register" circleImg={circleImage} pageHeaderBg={bgImage} />
 
         {/* Registration Form Section */}
         <section>

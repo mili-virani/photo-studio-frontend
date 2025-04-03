@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import "../assets/css/contact.css";
 import headerBg from "../assets/img/background/page-header-bg-10.jpg";
 import circleImg from "../assets/img/more/circle.png";
+import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ContactForm = () => {
@@ -71,14 +72,9 @@ const ContactForm = () => {
     <div className="wrapper">
       <Navbar />
       <Toaster position="top-center" />
-     <div className="wptb-page-heading">
-             <div className="wptb-item--inner" style={{ backgroundImage: `url(${headerBg})` }}>
-               <div className="wptb-item-layer wptb-item-layer-one">
-                 <img src={circleImg} alt="Decorative Circle" />
-               </div>
-               <h2 className="wptb-item--title">Contact us</h2>
-             </div>
-           </div>
+     
+      <Common title="Contact Us" pageHeaderBg={headerBg} circleImg={circleImg} />
+
       <section>
         <div className="container">
           <div className="wptb-login-form">

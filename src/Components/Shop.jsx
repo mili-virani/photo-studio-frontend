@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast"; // Toast notifications
 import headerBg from "../assets/img/background/page-header-bg-12.jpg";
 import circleImg from "../assets/img/more/circle.png";
+import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Shop = () => {
@@ -71,14 +72,7 @@ const Shop = () => {
     <main className="wrapper">
       <Toaster /> {/* Toast notifications */}
 
-      <div className="wptb-page-heading">
-        <div className="wptb-item--inner" style={{ backgroundImage: `url(${headerBg})` }}>
-          <div className="wptb-item-layer wptb-item-layer-one">
-            <img src={circleImg} alt="Decorative Circle" />
-          </div>
-          <h2 className="wptb-item--title">Shop</h2>
-        </div>
-      </div>
+      <Common title="Shop" pageHeaderBg={headerBg} circleImg={circleImg} />
 
       <section className="wptb-shop">
         <div className="container">

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast"; // Import Toaster
 import "../assets/css/components.css";
+import bgImage from "../assets/img/background/page-header-bg-10.jpg";
 import "../assets/css/contact.css";
+import Common from "./Common";
 import { useNavigate } from "react-router-dom";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -79,11 +81,8 @@ const ResetPassword = () => {
   return (
     <div className="wrapper">
       <Toaster /> {/* Toaster component for showing notifications */}
-      <div className="wptb-page-heading">
-        <div className="wptb-item--inner">
-          <h2 className="wptb-item--title">Reset Password</h2>
-        </div>
-      </div>
+      <Common title="Reset Password" pageHeaderBg={bgImage} />
+
       <section>
         <div className="container">
           <div className="wptb-login-form">

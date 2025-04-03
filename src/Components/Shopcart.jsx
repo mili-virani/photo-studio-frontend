@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import emptyCart from "../assets/img/empty-cart.png";
 import circleImg from "../assets/img/more/circle.png";
 import "../assets/css/shopcart.css";
+import Common from "./Common";
 import headerBg from "../assets/img/background/page-header-bg-4.jpg";
 
 const Shopcart = () => {
@@ -31,20 +32,14 @@ const Shopcart = () => {
   return (
     <main className="wrapper">
       {/* Page Header */}
-     <div className="wptb-page-heading">
-            <div className="wptb-item--inner" style={{ backgroundImage: `url(${headerBg})` }}>
-              <div className="wptb-item-layer wptb-item-layer-one">
-                <img src={circleImg} alt="Decorative Circle" />
-              </div>
-              <h2 className="wptb-item--title">Shop Cart</h2>
-            </div>
-          </div>
+      <Common title="Shop Cart" pageHeaderBg={headerBg} circleImg={circleImg} />
+
       {/* Shopping Cart */}
       <section className="shopping_cart">
         <div className="container">
           {cart.length === 0 ? (
             <div className="empty-cart">
-              <img src={emptyCart} alt="emptyCart"/>
+              <img src={emptyCart} alt="emptyCart" />
               <h3>
                 Your cart is empty!{" "}
                 <Link to="/shop" className="go-to-products">
@@ -97,7 +92,7 @@ const Shopcart = () => {
                 </tbody>
               </table>
 
-              <button type="button" className="styled-button secondary button-border" style={{marginTop:"40px"}}>
+              <button type="button" className="styled-button secondary button-border" style={{ marginTop: "40px" }}>
                 <Link to="/checkout" style={{ textDecoration: "none", color: "inherit" }}>
                   Proceed To Checkout
                 </Link>

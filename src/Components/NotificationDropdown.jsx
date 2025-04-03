@@ -28,7 +28,6 @@ const NotificationDropdown = () => {
   const fetchNotifications = async () => {
     try {
       const res = await axios.get("http://localhost:8000/api/notifications");
-      console.log("Fetched notifications:", res.data);
       setNotifications(res.data);
     } catch (error) {
       console.error("Error fetching notifications:", error);

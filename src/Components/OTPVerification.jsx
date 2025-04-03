@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,10 @@ const OTPVerification = () => {
   const [loading, setLoading] = useState(false);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Reset Password | Candid Creations"; 
+  }, []);
 
   // ✅ Handle OTP input change
   const handleChange = (index, e) => {

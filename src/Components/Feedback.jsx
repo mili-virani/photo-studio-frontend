@@ -5,6 +5,7 @@ import "../assets/css/components.css";
 import "../assets/css/contact.css";
 import headerBg from "../assets/img/background/page-header-bg-2.jpg";
 import circleImg from "../assets/img/more/circle.png";
+import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const FeedbackForm = () => {
@@ -87,17 +88,7 @@ const FeedbackForm = () => {
 
   return (
     <div className="wrapper">
-      <div className="wptb-page-heading">
-        <div
-          className="wptb-item--inner"
-          style={{ backgroundImage: `url(${headerBg})` }}
-        >
-          <div className="wptb-item-layer wptb-item-layer-one">
-            <img src={circleImg} alt="Decorative Circle" />
-          </div>
-          <h2 className="wptb-item--title">Feedback</h2>
-        </div>
-      </div>
+      <Common title="Feedback" pageHeaderBg={headerBg} circleImg={circleImg} />
 
       <Toaster position="top-center" reverseOrder={false} />
       {/* <div className="wptb-page-heading">

@@ -8,7 +8,8 @@ import { FaTrash } from "react-icons/fa";
 import { LuUpload } from "react-icons/lu";
 import { GoTrash } from "react-icons/go";
 import { FaUsers } from "react-icons/fa6";
-import { GoDownload } from "react-icons/go";
+import { HiDownload } from "react-icons/hi";
+import Common from "./Common";
 
 const Gallery = () => {
   const [projects, setProjects] = useState([]);
@@ -225,11 +226,8 @@ const Gallery = () => {
 
   return (
     <main className="wrapper">
-      <div className="wptb-page-heading">
-        <div className="wptb-item--inner" style={{ backgroundImage: `url(${backgroundImage})` }}>
-          <h2 className="wptb-item--title">Our Photos</h2>
-        </div>
-      </div>
+      <Common title="Photos" pageHeaderBg={backgroundImage} />
+
 
       <div className="text-container">
         <div className="text-first pe-5 my-4" style={{ paddingLeft: "3rem" }}>
@@ -254,7 +252,7 @@ const Gallery = () => {
 
 
           <button className="styled-button warning" onClick={handleRemoveDuplicates} disabled={removingDuplicates}>
-            <GoTrash size={20} />
+            <GoTrash size={1} />
             {removingDuplicates ? "    Removing Duplicates..." : "   Remove Duplicates"}
           </button>
         </div>
@@ -307,7 +305,7 @@ const Gallery = () => {
                           
                         }}
                       >
-                       <GoDownload color="white" size={29}/>
+                       <HiDownload color="white" size={25}/>
                       </button>
 
 

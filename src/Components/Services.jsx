@@ -10,6 +10,7 @@ import Prewedding from "../assets/img/services/prewedding.png";
 import Family from "../assets/img/services/family.jpeg";
 import Babygirl from "../assets/img/services/babygirl.jpeg";
 import Wedding from "../assets/img/services/wedding.avif";
+import Common from "./Common";
 
 import "../assets/css/header.css";
 import "../assets/css/global.css";
@@ -83,14 +84,7 @@ const Services = () => {
       <Toaster />
 
       {/* Page Header */}
-      <div className="wptb-page-heading">
-        <div className="wptb-item--inner" style={{ backgroundImage: `url(${headerBg})` }}>
-          <div className="wptb-item-layer wptb-item-layer-one">
-            <img src={circleImg} alt="Circle Design" />
-          </div>
-          <h2 className="wptb-item--title">Our Services</h2>
-        </div>
-      </div>
+      <Common title="Services" pageHeaderBg={headerBg} circleImg={circleImg} />
 
       {/* Our Services Section */}
       <section style={{ padding: "50px 0", backgroundColor: "#121212" }}>

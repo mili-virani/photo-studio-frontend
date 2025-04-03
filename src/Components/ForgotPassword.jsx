@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
@@ -8,6 +8,11 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    document.title = "Forgot Password | Candid Creations"; 
+  }, []);
+  
 
   const handleChange = (e) => {
     setEmail(e.target.value);

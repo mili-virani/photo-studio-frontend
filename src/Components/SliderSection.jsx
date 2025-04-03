@@ -15,6 +15,7 @@ const SliderSection = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
+    document.title = "Home | Candid Creations"; 
     const storedEmail = sessionStorage.getItem("userEmail");
     if (storedEmail) {
       const extractedName = storedEmail.split("@")[0]; // Extracts name before '@'

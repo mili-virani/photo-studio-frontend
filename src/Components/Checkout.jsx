@@ -7,6 +7,7 @@ import "../assets/css/shopcart.css";
 import "../assets/css/components.css";
 import { loadStripe } from "@stripe/stripe-js";
 import { FaInfoCircle } from "react-icons/fa";
+import Common from "./Common";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -167,14 +168,7 @@ const Checkout = () => {
 
   return (
     <main className="wrapper">
-      <div className="wptb-page-heading">
-        <div className="wptb-item--inner" style={{ backgroundImage: `url(${headerBg})` }}>
-          <div className="wptb-item-layer wptb-item-layer-one">
-            <img src={circleImg} alt="Decorative Circle" />
-          </div>
-          <h2 className="wptb-item--title">Shop Checkout</h2>
-        </div>
-      </div>
+      <Common title="Shop Checkout" circleImg={circleImg} pageHeaderBg={headerBg}/>
 
       <section className="checkout_cart">
         <div className="container">

@@ -16,9 +16,7 @@ import bg from "../assets/img/background/bg-8.jpg"; // Background image
 import img3 from "../assets/img/more/3.png"; // Image
 import star from "../assets/img/more/star.png";
 import starDark from "../assets/img/more/star-dark.png";
-import bg7 from "../assets/img/background/bg-7.jpg";
-import light3 from "../assets/img/more/light-3.png";
-import { FaPlay } from "react-icons/fa"; // Assuming you're using react-icons for icons
+import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const About = () => {
@@ -39,7 +37,7 @@ const About = () => {
       });
   }, []);
   useEffect(() => {
-    fetch(`${BACKEND_URL}/api/aboutus`) // Tamari backend API URL muko
+    fetch(`${BACKEND_URL}/api/aboutus`) 
       .then((res) => res.json())
       .then((data) => setAboutData(data))
       .catch((error) => console.error("Error fetching About Us data:", error));
@@ -70,17 +68,7 @@ const About = () => {
   return (
     <div>
       {/* Page Header */}
-      <div className="wptb-page-heading">
-        <div
-          className="wptb-item--inner"
-          style={{ backgroundImage: `url(${pageHeaderBg})` }}
-        >
-          <div className="wptb-item-layer wptb-item-layer-one">
-            <img src={circleImg} alt="Circle" />
-          </div>
-          <h2 className="wptb-item--title">  About Us</h2>
-        </div>
-      </div>
+      <Common title="About Us" pageHeaderBg={pageHeaderBg} circleImg={circleImg} />
 
       {/* About Section */}
       <section
@@ -322,35 +310,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div
-          className="wptb-video-player1 wow zoomIn"
-          style={{ backgroundImage: `url(${bg7})` }}
-        >
-          <div className="wptb-item--inner">
-            <div className="wptb-item--holder">
-              <div className="wptb-item--video-button">
-                <a
-                  className="btn"
-                  data-fancybox
-                  href="https://www.youtube.com/watch?v=SF4aHwxHtZ0"
-                >
-                  <span className="text-second">
-                    <FaPlay />
-                  </span>
-                  <span className="line-video-animation line-video-1"></span>
-                  <span className="line-video-animation line-video-2"></span>
-                  <span className="line-video-animation line-video-3"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="wptb-item-layer wptb-item-layer-one">
-            <img src={light3} alt="img" />
-          </div>
-        </div>
-        <div className="divider-line-hr mr-top-100"></div>
-      </div>
+     
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
 import { FaEdit, FaSave } from "react-icons/fa";
 import "../assets/css/users.css";
+import Common from "./Common";
 // import GalleryModal from "../Components/GalleryModal"; // Import GalleryModal
 
 const Users = () => {
@@ -57,11 +58,7 @@ const Users = () => {
 
     return (
         <main className="wrapper">
-            <div className="wptb-page-heading">
-                <div className="wptb-item--inner" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                    <h2 className="wptb-item--title">All Users</h2>
-                </div>
-            </div>
+            <Common title="Users" pageHeaderBg={backgroundImage} />
             <section className="py-5">
                 <div className="container">
                     {loading && <p>Loading...</p>}
