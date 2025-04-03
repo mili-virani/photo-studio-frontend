@@ -4,7 +4,6 @@ import toast, { Toaster } from "react-hot-toast";
 import "../assets/css/components.css";
 import "../assets/css/contact.css";
 import headerBg from "../assets/img/background/page-header-bg-2.jpg";
-import circleImg from "../assets/img/more/circle.png";
 import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -88,7 +87,7 @@ const FeedbackForm = () => {
 
   return (
     <div className="wrapper">
-      <Common title="Feedback" pageHeaderBg={headerBg} circleImg={circleImg} />
+      <Common title="Feedback" pageHeaderBg={headerBg} />
 
       <Toaster position="top-center" reverseOrder={false} />
       {/* <div className="wptb-page-heading">

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast"; // Toast notifications
 import headerBg from "../assets/img/background/page-header-bg-12.jpg";
-import circleImg from "../assets/img/more/circle.png";
 import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -72,7 +71,7 @@ const Shop = () => {
     <main className="wrapper">
       <Toaster /> {/* Toast notifications */}
 
-      <Common title="Shop" pageHeaderBg={headerBg} circleImg={circleImg} />
+      <Common title="Shop" pageHeaderBg={headerBg}/>
 
       <section className="wptb-shop">
         <div className="container">

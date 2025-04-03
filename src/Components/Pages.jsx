@@ -4,7 +4,6 @@ import { toast, Toaster } from "react-hot-toast";
 import axios from "axios";
 import "../assets/css/header.css";
 import headerBg from "../assets/img/background/bg-14.jpg";
-import circleImg from "../assets/img/more/circle.png";
 import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -74,7 +73,7 @@ const Pages = () => {
 
       <Toaster />
       <main className="wrapper">
-      <Common title="Services" pageHeaderBg={headerBg} circleImg={circleImg}/>
+      <Common title="Services" pageHeaderBg={headerBg}/>
 
         <div className="container">
           <h2 className="text-white text-center my-4">Selected Category Packages</h2>

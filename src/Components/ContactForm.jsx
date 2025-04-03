@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 // import "../assets/css/components.css";
 import "../assets/css/contact.css";
 import headerBg from "../assets/img/background/page-header-bg-10.jpg";
-import circleImg from "../assets/img/more/circle.png";
 import Common from "./Common";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -73,7 +72,7 @@ const ContactForm = () => {
       <Navbar />
       <Toaster position="top-center" />
      
-      <Common title="Contact Us" pageHeaderBg={headerBg} circleImg={circleImg} />
+      <Common title="Contact Us" pageHeaderBg={headerBg} />
 
       <section>
         <div className="container">

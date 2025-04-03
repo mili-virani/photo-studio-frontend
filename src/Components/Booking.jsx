@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import headerBg from "../assets/img/background/page-header-bg-12.jpg";
-import circleImg from "../assets/img/more/circle.png";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_blue.css";
 import { toast, Toaster } from "react-hot-toast";
@@ -110,7 +109,7 @@ const Booking = () => {
       <Navbar />
       <main className="wrapper">
         <Toaster position="top-center" reverseOrder={false} />
-        <Common title="Booking Form" circleImg={circleImg} pageHeaderBg={headerBg} />
+        <Common title="Booking Form" pageHeaderBg={headerBg} />
         <div className="container">
           <div className="wptb-login-form">
             <div className="wptb-form--wrapper">

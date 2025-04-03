@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import headerBg from "../assets/img/background/page-header-bg-12.jpg";
-import circleImg from "../assets/img/more/circle.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/shopcart.css";
@@ -168,7 +167,7 @@ const Checkout = () => {
 
   return (
     <main className="wrapper">
-      <Common title="Shop Checkout" circleImg={circleImg} pageHeaderBg={headerBg}/>
+      <Common title="Shop Checkout" pageHeaderBg={headerBg}/>
 
       <section className="checkout_cart">
         <div className="container">

@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Bootstrap JS
 
 import pageHeaderBg from "../assets/img/background/page-header-bg-4.jpg"; // Page header background
-import circleImg from "../assets/img/more/circle.png"; // Circle image
 import bgImage from "../assets/img/more/texture.png"; // About section background
 import bg6 from "../assets/img/background/bg-6.jpg"; // Main image
 import img1 from "../assets/img/more/1.jpg"; // Additional image 1
@@ -68,7 +67,7 @@ const About = () => {
   return (
     <div>
       {/* Page Header */}
-      <Common title="About Us" pageHeaderBg={pageHeaderBg} circleImg={circleImg} />
+      <Common title="About Us" pageHeaderBg={pageHeaderBg}/>
 
       {/* About Section */}
       <section

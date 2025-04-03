@@ -82,7 +82,7 @@ const Login = () => {
   return (
     <div className="wrapper">
       <Toaster position="top-center" reverseOrder={false} />
-      <Common title="Login" pageHeaderBg={bgImage} circleImg={circleImage} />
+      <Common title="Login" pageHeaderBg={bgImage}/>
 
       <section>
         <div className="container">

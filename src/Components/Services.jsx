@@ -18,7 +18,6 @@ import "../assets/css/components.css";
 import Navbar from "./Navbar";
 
 import headerBg from "../assets/img/background/page-header-bg-6.jpg";
-import circleImg from "../assets/img/more/circle.png";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -84,7 +83,7 @@ const Services = () => {
       <Toaster />
 
       {/* Page Header */}
-      <Common title="Services" pageHeaderBg={headerBg} circleImg={circleImg} />
+      <Common title="Services" pageHeaderBg={headerBg} />
 
       {/* Our Services Section */}
       <section style={{ padding: "50px 0", backgroundColor: "#121212" }}>

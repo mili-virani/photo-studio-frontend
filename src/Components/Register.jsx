@@ -81,7 +81,7 @@ const Register = () => {
       <Toaster />
       <main className="wrapper">
         {/* Background Header Section */}
-        <Common title="Register" circleImg={circleImage} pageHeaderBg={bgImage} />
+        <Common title="Register" pageHeaderBg={bgImage} />
 
         {/* Registration Form Section */}
         <section>

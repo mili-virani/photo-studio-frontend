@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import emptyCart from "../assets/img/empty-cart.png";
-import circleImg from "../assets/img/more/circle.png";
 import "../assets/css/shopcart.css";
 import Common from "./Common";
 import headerBg from "../assets/img/background/page-header-bg-4.jpg";
@@ -32,7 +31,7 @@ const Shopcart = () => {
   return (
     <main className="wrapper">
       {/* Page Header */}
-      <Common title="Shop Cart" pageHeaderBg={headerBg} circleImg={circleImg} />
+      <Common title="Shop Cart" pageHeaderBg={headerBg} />
 
       {/* Shopping Cart */}
       <section className="shopping_cart">
