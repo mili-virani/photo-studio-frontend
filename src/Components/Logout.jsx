@@ -1,25 +1,22 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Logout = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
+    // Show toast notification
+    toast.success("Logged out successfully!", {
+      position: "top-right",
+      duration: 2000, // Show toast for 2 seconds
+    });
+
     // Remove session data
     sessionStorage.removeItem("email");
 
-    // Show logout success toast
-    toast.success("Logged out successfully!", {
-      position: "top-right",
-      duration: 3000, // Toast disappears after 3 seconds
-    });
-
-    // Redirect to login page after a short delay
+    // Ensure the toast is visible before refreshing
     setTimeout(() => {
-      navigate("/");
-    }, 1500); // Delay navigation to allow the toast to be visible
-  }, [navigate]);
+      window.location.href = "/"; // Full page reload, ensuring complete logout
+    }, 1500); // Adjust delay to let toast be visible
+  }, []);
 
   return null;
 };

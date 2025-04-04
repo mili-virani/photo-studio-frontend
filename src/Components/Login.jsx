@@ -66,6 +66,7 @@ const Login = () => {
 
       setTimeout(() => {
         navigate("/"); // Redirect to home
+        window.location.reload();
         window.scrollTo(0, 0);
       }, 2000);
     } catch (error) {

@@ -12,6 +12,7 @@
     background-repeat: no-repeat;
     overflow: hidden;
 }
+
 .footer.style1::before {
     content: '';
     position: absolute;
@@ -21,6 +22,7 @@
     height: 110px;
     background-color: var(--color-dark-seven);
 }
+
 .footer .footer--inner{
     position: relative;
     padding-top: 155px;
@@ -48,6 +50,7 @@
 .footer .footer-widget svg {
     display: block;
 }
+
 .footer .widget-title {
     color: var(--color-two-fixed);
     font-size: 18px;
@@ -55,11 +58,13 @@
     letter-spacing: 2px;
     padding-top: 20px;
 }
+
 .footer .widget-title::before {
     position: absolute;
     top: 0;
     display: none;
 }
+
 .footer .logo img {
     min-width: 165px;
 }
@@ -146,7 +151,7 @@
 .footer .newsletter-form button.btn {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -60px;
     min-width: auto;
     height: 100%;
     font-size: 12px;

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import SliderSection from "./Components/SliderSection"; // Example page component
 import About from "./Components/About"; // Example page component
@@ -25,12 +25,14 @@ import NotificationDropdown from "./Components/NotificationDropdown";
 import Users from "./Components/Users";
 import Photos from "./Components/Photos";
 import Mybooking from "./Components/Mybooking";
+import SearchGallery from "./Components/SearchGallery";
 
 // import Gallery from './pages/Gallery'; // Example page component
 
 // import Blog from './pages/Blog'; // Example page component
 
 const App = () => {
+  const token = localStorage.getItem("token");
   return (
     <Router>
       <Navbar />
@@ -42,10 +44,10 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/services" element={token?<Services />:<Navigate to="/login" />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/shopcart" element={<Shopcart />} />
+        <Route path="/shopcart" element={token?<Shopcart />:<Navigate to="/login" />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/feedback" element={<FeedbackForm />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
@@ -59,6 +61,8 @@ const App = () => {
         <Route path="/photos/:personId" element={<Photos />} /> 
         <Route path="/mybookings" element={<Mybooking />} /> 
         <Route path="/notifications" element={<NotificationDropdown />} /> 
+        <Route path="/search" element={<SearchGallery />} /> 
+      
         {/* <Route path="/gallery" element={<Gallery />} />
     
   <Route path="/blog" element={<Blog />} /> */}

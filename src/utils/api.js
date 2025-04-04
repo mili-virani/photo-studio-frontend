@@ -2,6 +2,7 @@ import axios from "axios";
 
 const loginid = "67dbd2bb85ece786b30652c2";
 const BASE_URL = "https://68.183.93.60:7979";
+const BASE_URL_2 = "http://localhost:7979";
 
 // Upload image & recognize face
 export const recognizeFace = async (formData) => {
@@ -164,5 +165,20 @@ export const saveUpdatedPhoto = async (imageId) => {
             message: error.response?.data?.message || "Failed to save updated photo",
             error: error.response?.data || error.message
         };
+    }
+};
+
+export const getImagesByName = async (name) => {
+    try {
+        const response = await axios.get(`${BASE_URL_2}/getImagesByName/${name}`, {
+            headers: {
+                "loginid": loginid  // Ensure loginid is passed in headers
+            }
+        });
+        console.log("response",response);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching person gallery:", error.response?.data || error.message);
+        return { error: "Failed to fetch person's gallery" };
     }
 };

@@ -16,7 +16,6 @@ const Footer = () => {
                   <div className="footer-nav">
                     <ul>
                       <li className="menu-item"><Link to="/about">About Us</Link></li>
-                      <li className="menu-item"><Link to="/packages">Packages</Link></li>
                       <li className="menu-item"><Link to="/gallery">Gallery</Link></li>
                       <li className="menu-item"><Link to="/services">Services</Link></li>
                     </ul>
@@ -29,17 +28,7 @@ const Footer = () => {
                   <div className="logo mr-bottom-55">
                     <Link to="/"><img src={logo} alt="logo" style={{height:"117px",width:"28px"}}/></Link>
                   </div>
-                  <h6 className="widget-title">Sign up for all the latest <br /> news and offers</h6>
-                  <form className="newsletter-form" method="post">
-                    <div className="form-group">
-                      <input type="email" name="email" className="form-control" placeholder="Enter your email" required />
-                    </div>
-                    <button type="submit" className="btn btn-two">
-                      <span className="btn-wrap">
-                        <span className="text-first">Subscribe</span>
-                      </span>
-                    </button>
-                  </form>
+                 
                 </div>
               </div>
 
@@ -49,7 +38,6 @@ const Footer = () => {
                     <ul>
                       <li className="menu-item"><Link to="/booking">Booking</Link></li>
                       <li className="menu-item"><Link to="/shop">Products</Link></li>
-                      <li className="menu-item"><Link to="/blog">Recent Posts</Link></li>
                       <li className="menu-item"><Link to="/contact">Contact Us</Link></li>
                     </ul>
                   </div>
@@ -65,14 +53,13 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-inner">
             <div className="copyright">
-              <p><a href="https://themeforest.net/user/wpthemebooster">Candid Creations</a> photography, All Rights Reserved</p>
+              <p><a href="https://photostudiobymili.netlify.app/">Candid Creations</a> photography, All Rights Reserved</p>
             </div>
             <div className="social-box style-oval">
               <ul>
                 <li><a href="https://www.facebook.com/"><FaFacebook /></a></li>
                 <li><a href="https://www.instagram.com/"><FaInstagram /></a></li>
                 <li><a href="https://www.linkedin.com/"><FaLinkedin /></a></li>
-                <li><a href="https://www.behance.com/"><FaBehance /></a></li>
               </ul>
             </div>
           </div>

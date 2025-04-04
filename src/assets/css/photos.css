@@ -87,13 +87,6 @@
     background-color: #0056b3;
 }
 
-
-.masonry-image {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-
 .my-masonry-grid {
     display: flex;
     margin-left: -30px;

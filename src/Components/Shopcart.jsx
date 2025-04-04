@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import emptyCart from "../assets/img/empty-cart.png";
+import toast from "react-hot-toast";
 import "../assets/css/shopcart.css";
 import Common from "./Common";
 import headerBg from "../assets/img/background/page-header-bg-4.jpg";
 
 const Shopcart = () => {
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("You must be logged in to access this page. Please log in first.", {
+        position: "top-center",
+        duration: 3000,
+      });
+      setTimeout(() => navigate(`/login`), 3000);
+    }
+  }, [navigate]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

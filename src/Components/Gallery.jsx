@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
-import { recognizeFace, getAllPhotos, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto } from "../utils/api";
+import { recognizeFace, getAllPhotos, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto, getImagesByName } from "../utils/api";
 import backgroundImage from "../assets/img/background/page-header-bg-4.jpg";
 import "../assets/css/gallery.css";
 import { FaTrash } from "react-icons/fa";
@@ -24,6 +24,8 @@ const Gallery = () => {
   const [aiPrompt, setAiPrompt] = useState("");
   const [aiGeneratedImage, setAiGeneratedImage] = useState(null);
   const [saveModalOpen, setSaveModalOpen] = useState(false);
+  const [searchName, setSearchName] = useState("");
+  const [images, setImages] = useState([]);
 
   const navigate = useNavigate();
 
@@ -169,6 +171,30 @@ const Gallery = () => {
     }
   };
 
+  const handleSearch = async () => {
+    if (!searchName.trim()) {
+      setError("Please enter a name.");
+      return;
+    }
+
+    setError(null); // Reset error state
+
+    try {
+      const data = await getImagesByName(searchName);
+
+      if (data.error) {
+        setError(data.error);
+        setProjects([]); // Clear gallery if no results
+      } else {
+        setProjects(data.images || []); // Update gallery with search results
+      }
+    } catch (err) {
+      setError("Failed to fetch images.");
+      setProjects([]); // Clear gallery if error occurs
+    }
+  };
+
+
   // const openModal = (index) => {
   //   console.log("Opening modal for index:", index);
   //   setCurrentImageIndex(index);
@@ -228,13 +254,23 @@ const Gallery = () => {
     <main className="wrapper">
       <Common title="Photos" pageHeaderBg={backgroundImage} />
 
-
       <div className="text-container">
         <div className="text-first pe-5 my-4" style={{ paddingLeft: "3rem" }}>
           <button className="styled-button users" onClick={() => navigate("/users")}>
             <FaUsers size={25} style={{ marginRight: "10px" }} />
             All People
           </button>
+        </div>
+        <div className="text-third my-4">
+          <div className="search-bar d-flex">
+            <input
+              type="text"
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+              placeholder="Search..."
+            />
+            <button className="styled-button " onClick={handleSearch} style={{marginTop:"10px"}}>Search</button>
+          </div>
         </div>
 
         <div className="text-second pe-5 my-4">
@@ -252,7 +288,7 @@ const Gallery = () => {
 
 
           <button className="styled-button warning" onClick={handleRemoveDuplicates} disabled={removingDuplicates}>
-            <GoTrash size={1} />
+            <GoTrash size={25} />
             {removingDuplicates ? "    Removing Duplicates..." : "   Remove Duplicates"}
           </button>
         </div>
@@ -302,13 +338,11 @@ const Gallery = () => {
                           e.stopPropagation(); // Stop event from bubbling to parent elements
                           e.preventDefault(); // Prevent any default behavior
                           downloadImage(project?.photopath, `image-${Date.now()}.jpg`);
-                          
+
                         }}
                       >
-                       <HiDownload color="white" size={25}/>
+                        <HiDownload color="white" size={25} />
                       </button>
-
-
 
                       <div className="overlay-container">
                         {project?.matched_faces &&
@@ -420,7 +454,6 @@ const Gallery = () => {
           </div>
         </div>
       )}
-
 
     </main>
   );

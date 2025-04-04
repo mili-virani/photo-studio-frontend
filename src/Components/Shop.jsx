@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast"; // Toast notifications
 import headerBg from "../assets/img/background/page-header-bg-12.jpg";
 import Common from "./Common";
+import { useNavigate } from "react-router-dom";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Shop = () => {
@@ -11,16 +11,16 @@ const Shop = () => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]); // State to store products
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      toast.error("You must be logged in to access this page. Please log in first.", {
-        position: "top-center",
-        duration: 3000,
-      });
-      setTimeout(() => navigate(`/login`), 3000);
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     toast.error("You must be logged in to access this page. Please log in first.", {
+  //       position: "top-center",
+  //       duration: 3000,
+  //     });
+  //     setTimeout(() => navigate(`/login`), 3000);
+  //   }
+  // }, [navigate]);
 
   // Fetch products from API
   useEffect(() => {
@@ -41,6 +41,16 @@ const Shop = () => {
   }, []);
 
   const addToCart = (product) => {
+    const token = localStorage.getItem("token");
+      if (!token) {
+        toast.error("You must be logged in to access this page. Please log in first.", {
+          position: "top-center",
+          duration: 3000,
+        });
+        setTimeout(() => navigate(`/login`), 3000);
+        return;
+      }
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     if (!Array.isArray(cart)) {

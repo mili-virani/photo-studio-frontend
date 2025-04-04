@@ -92,7 +92,7 @@
 .header_right_part {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 11px;
 }
 
 /* Cart Icon */

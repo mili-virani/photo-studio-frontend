@@ -93,9 +93,8 @@ const Photos = () => {
                                 <Masonry breakpointCols={breakpointColumns} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
                                     {photos.length > 0 ? (
                                         photos.map((photo, index) => (
-                                            <div className="image-container">
+                                            <div className="image-container" style={{marginBottom:"30px"}}>
                                                 <img key={index} src={photo.photopath} alt="Person" className="masonry-image" />
-
                                             </div>
                                         ))
                                     ) : (
