@@ -12,6 +12,13 @@ const NotificationDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if(!token){
+      setNotifications([]);
+      return;
+    }
+
     fetchNotifications();
 
     // Listen for real-time notifications
@@ -27,7 +34,7 @@ const NotificationDropdown = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/notifications");
+      const res = await axios.get(`${BACKEND_URL}/api/notifications`);
       setNotifications(res.data);
     } catch (error) {
       console.error("Error fetching notifications:", error);
