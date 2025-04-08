@@ -25,7 +25,8 @@ import NotificationDropdown from "./Components/NotificationDropdown";
 import Users from "./Components/Users";
 import Photos from "./Components/Photos";
 import Mybooking from "./Components/Mybooking";
-import SearchGallery from "./Components/SearchGallery";
+import SearchComponent from "./Components/SearchComponent";
+// import SearchGallery from "./Components/SearchGallery";
 
 // import Gallery from './pages/Gallery'; // Example page component
 
@@ -61,7 +62,7 @@ const App = () => {
         <Route path="/photos/:personId" element={<Photos />} /> 
         <Route path="/mybookings" element={<Mybooking />} /> 
         <Route path="/notifications" element={<NotificationDropdown />} /> 
-        <Route path="/search" element={<SearchGallery />} /> 
+        <Route path="/search" element={<SearchComponent />} /> 
       
         {/* <Route path="/gallery" element={<Gallery />} />
     

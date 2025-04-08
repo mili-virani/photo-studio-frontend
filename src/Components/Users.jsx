@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getAllPersons, updatePersonName } from "../utils/api";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import backgroundImage from "../assets/img/background/page-header-bg-8.jpg";
-import { FaEdit, FaSave } from "react-icons/fa";
+import { FaSave } from "react-icons/fa";
+import { AiFillEdit } from "react-icons/ai";
 import "../assets/css/users.css";
 import Common from "./Common";
 // import GalleryModal from "../Components/GalleryModal"; // Import GalleryModal
@@ -95,7 +96,7 @@ const Users = () => {
                                         <div className="user-info">
                                             <div className="name-edit-container">
                                                 <p className="user-name">{user.name}</p>
-                                                <FaEdit
+                                                <AiFillEdit
                                                     onClick={() => handleEditClick(user)}
                                                     className="edit-icon"
                                                 />
