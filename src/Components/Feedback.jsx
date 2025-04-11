@@ -36,6 +36,11 @@ const FeedbackForm = () => {
       toast.error("All fields are required!");
       return false;
     }
+    if (/\d/.test(name)) {
+      toast.error("Name should not contain digits!");
+      return false;
+    }
+    
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       toast.error("Invalid email format!");
       return false;

@@ -1,36 +1,51 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function SearchComponent() {
+const SearchComponent = () => {
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
+    const [images, setImages] = useState([]);
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get('http://localhost:5001/search', {
-                params: { query }, // Send user's input dynamically
-            });
-            console.log(response.data); // or response.data.results if your backend sends `results`
+            const response = await axios.post('http://localhost:5001/search', { query });
+            const results = response.data.results;
+
+            // Take top 5 results
+            const topImages = results.slice(0, 1);
+            setImages(topImages);
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Search error:', error);
         }
     };
 
     return (
-        <div style={{ marginTop: "150px" }}>
-            <input type="text" value={query} onChange={e => setQuery(e.target.value)} />
-            <button onClick={handleSearch}>Search</button>
+        <div className="p-6" style={{marginTop:"130px"}}>
+            <input
+                type="text"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                placeholder="Search for images..."
+                className="border p-2 rounded w-64 mr-2"
+            />
+            <button onClick={handleSearch} className="bg-blue-500 text-white px-4 py-2 rounded">
+                Search
+            </button>
 
-            <div>
-                {results.map((item, idx) => (
-                    <div key={idx}>
-                        <img src={`images/${item.image}`} alt="Search result" style={{ width: '200px' }} />
-                        <p>Distance: {item.distance.toFixed(4)}</p>
+            <div className="gap-4">
+                {images.map((img, idx) => (
+                    <div key={idx} className=" p-2 rounded shadow">
+                        <img
+                            src={`http://localhost:5001/${img.image.replace('./', '')}`}
+                            alt={`result-${idx}`}
+                            className="w-full h-auto rounded"
+                            style={{height:"400px",width:"400px"}}
+                        />
+                        <p className="text-sm text-gray-500 mt-2">Score: {img.score.toFixed(4)}</p>
                     </div>
                 ))}
             </div>
         </div>
     );
-}
+};
 
 export default SearchComponent;

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Masonry from "react-masonry-css";
-import { recognizeFace, getAllPhotos, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto, getImagesByName } from "../utils/api";
+import { recognizeFace, getAllPhotos,getPersonGallery, removeDuplicates, deletePhoto, applyAIFilter, saveUpdatedPhoto, getImagesByName, deleteFace } from "../utils/api";
 import backgroundImage from "../assets/img/background/page-header-bg-4.jpg";
 import "../assets/css/gallery.css";
+// import axios from "axios";
 import { FaTrash } from "react-icons/fa";
 import { LuUpload } from "react-icons/lu";
 import { GoTrash } from "react-icons/go";
 import { FaUsers } from "react-icons/fa6";
 import { HiDownload } from "react-icons/hi";
 import Common from "./Common";
+const BASE_URL = "https://68.183.93.60:7979";
 
 const Gallery = () => {
   const [projects, setProjects] = useState([]);
@@ -25,7 +27,7 @@ const Gallery = () => {
   const [aiGeneratedImage, setAiGeneratedImage] = useState(null);
   const [saveModalOpen, setSaveModalOpen] = useState(false);
   const [searchName, setSearchName] = useState("");
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
 
   const navigate = useNavigate();
 
@@ -39,7 +41,7 @@ const Gallery = () => {
       setError(null);
 
       const data = await getAllPhotos();
-      console.log("data", data);
+      // console.log("data", data);
       if (data && data?.length > 0) {
         setProjects(data);
         setAllProjects(data);
@@ -53,54 +55,54 @@ const Gallery = () => {
     }
   };
 
-  // const handleUpload = async (e) => {
-  //   const file = e.target.files[0];
-  //   if (!file) return;
-
-  //   try {
-  //     setUploading(true);
-  //     setError(null);
-
-  //     const formData = new FormData();
-  //     formData.append("image", file);
-
-  //     const response = await recognizeFace(formData);
-  //     if (response && response.faces.length > 0) {
-  //       const personId = response.faces[0]?.person_id;
-  //       const galleryResponse = await getPersonGallery(personId);
-
-  //       if (galleryResponse && galleryResponse.photos.length > 0) {
-  //         setProjects(galleryResponse.photos);
-  //       } else {
-  //         setError("No photos found for this person.");
-  //         setProjects([]); // Ensure "Show All Photos" button appears
-  //       }
-  //     } else {
-  //       setError("No matching faces found.");
-  //       setProjects([]); // Ensure "Show All Photos" button appears
-  //     }
-  //   } catch (error) {
-  //     setError("Error processing face recognition.");
-  //     setProjects([]); // Ensure gallery resets on error
-  //   } finally {
-  //     setUploading(false);
-  //   }
-  // };
-
   const handleUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     try {
+      setUploading(true);
+      setError(null);
+
       const formData = new FormData();
       formData.append("image", file);
 
-      await recognizeFace(formData); // Just call the API, no state updates
+      const response = await recognizeFace(formData);
+      if (response && response.faces.length > 0) {
+        const personId = response.faces[0]?.person_id;
+        const galleryResponse = await getPersonGallery(personId);
+
+        if (galleryResponse && galleryResponse.photos.length > 0) {
+          setProjects(galleryResponse.photos);
+        } else {
+          setError("No photos found for this person.");
+          setProjects([]); // Ensure "Show All Photos" button appears
+        }
+      } else {
+        setError("No matching faces found.");
+        setProjects([]); // Ensure "Show All Photos" button appears
+      }
     } catch (error) {
-      console.error("Error recognizing face:", error);
+      setError("Error processing face recognition.");
+      setProjects([]); // Ensure gallery resets on error
+    } finally {
+      setUploading(false);
     }
-    fetchGallery();
   };
+
+  // const handleUpload = async (e) => {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
+
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("image", file);
+
+  //     await recognizeFace(formData); // Just call the API, no state updates
+  //   } catch (error) {
+  //     console.error("Error recognizing face:", error);
+  //   }
+  //   fetchGallery();
+  // };
 
   const resetGallery = () => {
     setProjects(allProjects);
@@ -127,13 +129,53 @@ const Gallery = () => {
 
   const handleDelete = async (imageId) => {
     try {
-      await deletePhoto(imageId);
+      const data = await deletePhoto(imageId); // delete the image
+      console.log("data",data);
+
       fetchGallery(); // Refresh gallery after deletion
     } catch (error) {
-      alert("Failed to delete image.");
+      console.error("Error during deletion:", error);
+      alert("Failed to delete image or face.");
     }
   };
 
+  // const handleDelete = async (imageId) => {
+  //   try {
+  //     // Step 1: Get the full gallery photo list (plain array)
+  //     const res = await getAllPhotos(); // Should return an array, not an object
+  //     console.log("res", res);
+  
+  //     // Step 2: Find the photo with matching imageId
+  //     const targetPhoto = res.find(photo => photo.image_id === imageId);
+  
+  //     if (!targetPhoto) {
+  //       console.warn("No matching photo found for imageId:", imageId);
+  //     } else {
+  //       // Step 3: Get face IDs from matched_faces and delete them
+  //       const matchedFaces = targetPhoto.matched_faces || [];
+  
+  //       for (const face of matchedFaces) {
+  //         const faceId = face.person_id;
+  //         if (faceId) {
+  //           const face = await deleteFace({ face_id: faceId });
+  //           console.log("face",face);
+  //           console.log("Deleted face with ID:", faceId);
+  //         }
+  //       }
+  //     }
+  
+  //     // Step 4: Delete the image itself
+  //     const photoDeleteResponse = await deletePhoto(imageId);
+  //     console.log("Photo deleted:", photoDeleteResponse);
+  
+  //     // Step 5: Refresh the gallery
+  //     fetchGallery();
+  //   } catch (error) {
+  //     console.error("Error during deletion:", error);
+  //     alert("Failed to delete image or face.");
+  //   }
+  // };
+  
   const handleApplyAIFilter = async () => {
     setIsGenerating(true);
     if (!aiPrompt || projects.length === 0) return;
@@ -268,8 +310,9 @@ const Gallery = () => {
               value={searchName}
               onChange={(e) => setSearchName(e.target.value)}
               placeholder="Search..."
+              style={{marginTop:"8px", borderRadius:"10px"}}
             />
-            <button className="styled-button " onClick={handleSearch} style={{marginTop:"10px"}}>Search</button>
+            <button className="styled-button " onClick={handleSearch} style={{ marginTop: "10px" }}>Search</button>
           </div>
         </div>
 
@@ -338,7 +381,6 @@ const Gallery = () => {
                           e.stopPropagation(); // Stop event from bubbling to parent elements
                           e.preventDefault(); // Prevent any default behavior
                           downloadImage(project?.photopath, `image-${Date.now()}.jpg`);
-
                         }}
                       >
                         <HiDownload color="white" size={25} />

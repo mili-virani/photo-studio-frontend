@@ -182,3 +182,21 @@ export const getImagesByName = async (name) => {
         return { error: "Failed to fetch person's gallery" };
     }
 };
+
+export const deleteFace = async (faceId) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/delete_face`, {
+            headers: {
+                "loginid": loginid,
+                "Content-Type": "application/json"
+            },
+            data: {
+                face_id: faceId
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error deleting face:", error.response?.data || error.message);
+        return { error: "Failed to delete face" };
+    }
+};

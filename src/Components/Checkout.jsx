@@ -78,17 +78,21 @@ const Checkout = () => {
       );
     }
 
-    if (!formData.phone) {newErrors.phone = (
-      <span style={{ color: "red", fontWeight: "bolder" }}>
-        <FaInfoCircle /> required
-      </span>
-    );}
+    if (!formData.phone) {
+      newErrors.phone = (
+        <span style={{ color: "red", fontWeight: "bolder" }}>
+          <FaInfoCircle /> required
+        </span>
+      );
+    }
 
-    if (!formData.email) {newErrors.email = (
-      <span style={{ color: "red", fontWeight: "bolder" }}>
-        <FaInfoCircle /> required
-      </span>
-    );}
+    if (!formData.email) {
+      newErrors.email = (
+        <span style={{ color: "red", fontWeight: "bolder" }}>
+          <FaInfoCircle /> required
+        </span>
+      );
+    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -167,7 +171,7 @@ const Checkout = () => {
 
   return (
     <main className="wrapper">
-      <Common title="Shop Checkout" pageHeaderBg={headerBg}/>
+      <Common title="Shop Checkout" pageHeaderBg={headerBg} />
 
       <section className="checkout_cart">
         <div className="container">
@@ -236,7 +240,7 @@ const Checkout = () => {
                     <label>Order Notes (Optional)</label>
                     <textarea name="notes" value={formData.notes} onChange={handleChange} placeholder="Notes about your order & delivery"></textarea>
                   </div>
-                  <button className="btn white-opacity creative" type="submit" style={{marginTop:"15px"}}>
+                  <button className="btn white-opacity creative" type="submit" style={{ marginTop: "15px" }}>
                     Place Order
                   </button>
                 </div>
