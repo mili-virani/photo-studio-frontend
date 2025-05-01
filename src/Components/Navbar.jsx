@@ -148,9 +148,11 @@ const Navbar = () => {
                       <Link to="#">{userFullName}</Link>
                       <ul className="sub-menu">
                         <li className="menu-item"><Link to="/profile">Profile</Link></li>
+                        <li className="menu-item"><Link to="/mybookings">My Bookings</Link></li>
                         <li className="menu-item"><Link to="#" onClick={handleLogout}>Logout</Link></li>
                       </ul>
                     </li>
+  
                   ) : (
                     <ul>
                       <li className="menu-item" style={{ marginLeft: "20px" }}><Link to="/register">Register</Link></li>

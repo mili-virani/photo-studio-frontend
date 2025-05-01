@@ -156,10 +156,6 @@ const Profile = () => {
                   )}
                 </div>
 
-                <button className="styled-button secondary " onClick={() => navigate("/mybookings")}>
-                  My Bookings
-                </button>
-
   
               </div>
             </div>
