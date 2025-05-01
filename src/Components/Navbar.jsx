@@ -90,6 +90,7 @@ const Navbar = () => {
     localStorage.removeItem("fullName");
     setUserFullName(null);
     navigate(`/login`);
+    window.location.reload(); // Force full page refresh
   };
 
   // Close dropdown when clicking outside
@@ -177,7 +178,7 @@ const Navbar = () => {
               <div className="cart-container position-relative">
                 <Link to="/shopcart" className="cart-button position-relative">
                   <i className="bi bi-cart3" style={{ fontSize: "30px", color: "white" }}></i>
-                  {totalItems > 0 && (
+                  {localStorage.getItem("token") && totalItems > 0 && (
                     <span className="cart-badge">{totalItems}</span>
                   )}
                 </Link>

@@ -14,7 +14,7 @@ const Users = () => {
     const [error, setError] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [editedName, setEditedName] = useState("");
-   
+
     useEffect(() => {
         fetchUsers();
     }, []);
@@ -65,7 +65,9 @@ const Users = () => {
                     {loading && <p>Loading...</p>}
                     {error && <p>{error}</p>}
                     {!loading && !error && users.length === 0 && <p>No users available.</p>}
+                    <button className="back-button" onClick={() => navigate(-1)}>⬅ Back</button>
                     {!loading && !error && users.length > 0 && (
+                        
                         <div className="user-grid">
                             {users.map((user) => (
                                 <div key={user.face_id} className="user-card">

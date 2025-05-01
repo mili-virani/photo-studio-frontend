@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import "../assets/css/shopcart.css";
 import Common from "./Common";
 import headerBg from "../assets/img/background/page-header-bg-4.jpg";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Shopcart = () => {
   const [cart, setCart] = useState([]);
@@ -79,7 +80,7 @@ const Shopcart = () => {
                   {cart.map((item) => (
                     <tr className="cart_content" key={item._id}>
                       <td className="cart_image">
-                        <img src={item.image} alt={item.name} />
+                        <img src={BACKEND_URL + item.image} alt={item.name} />
                       </td>
                       <td className="cart_title">{item.name}</td>
                       <td className="cart_price">₹{item.price}</td>

@@ -14,15 +14,6 @@
   backdrop-filter: blur(4px);
 }
 
-.modal-white-gallery {
-  background-color: white;
-  border-radius: 8px;
-  width: 900px;
-  /* max-height: 90%; */
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 /* Modal Content */
 .modal-content-gallery {
   width: 60%;

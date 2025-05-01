@@ -410,7 +410,6 @@ const Gallery = () => {
 
       {modalOpen && projects.length > 0 && (
         <div className="modal-overlay-gallery">
-          {/* <div className="modal-white-gallery"> */}
           <div className={`modal-content-gallery`}
             onClick={(e) => e.stopPropagation()}>
             <button className="close-btn-gallery" onClick={closeModal}>
